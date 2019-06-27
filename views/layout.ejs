@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.semanticui.min.css">
+    <link rel="stylesheet" type="text/css" href="/Semantic-UI-CSS-master/semantic.css">
+    <link rel="stylesheet" type="text/css" href="/spectrum.min.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <script src="/Resources/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.semanticui.min.js"></script>
+    <script src="/Semantic-UI-CSS-master/semantic.min.js"></script>
+    <!-- calendar -->
+    <script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
+    <!-- realtime form validation for all forms on the site -->
+    <script src="/js/formvalidation.js"></script>
+    <script src="/js/responsive.js" async></script>
+    
+    <title>
+        <%-title%>
+    </title>
+
+    <style>
+            <%if (title == "Login | Project Gate" || title == "Register | Project Gate" || title == "Password Recovery | Project Gate"  ) { %>
+                body {background-image: url(/Resources/banner.jpg)}
+
+            <% } %>
+    </style>
+
+</head>
+
+<body>
+
+            <%if (title != "Login | Project Gate" && title != "Register | Project Gate" && title != "Password Recovery | Project Gate") { %>
+            <div class="pusher">
+                            
+                <div class="ui small fixed menu" id="mobileBurger">
+                    <a class="burger item">
+                        <i class="sidebar icon"></i>
+                    </a>
+    
+                    <div class="ui small right menu">
+                        <a href="/profile" class="item" title="Profile">
+                            <i class="user circle icon"></i>
+                        </a>
+                        <a href="/settings" class="item" title="Settings">
+                            <i class="cog icon"></i>
+                        </a>
+                        <a href="/logout" class="item" title="Sign Out">
+                            <i class="sign out icon"></i>
+                        </a>
+                    </div>
+                </div>
+                        <div class="ui fixed large menu" id="desktopMenu">
+                          <a href="/" class="item"><i class="home icon"></i></a>
+                          <a href="/projects" class="item">Projects</a>
+                          <a href="/myprojects" class="item">My Projects</a>
+
+                          <% if (privilege != "student"){ %>
+                          <a href="/students" class="item">Students</a>
+                          <% } %>
+
+                          <a href="/about" class="item">About Us</a>
+
+                          <div class="ui large right menu">
+                                <a href="/profile" class="item" title="Profile"> <i class=" circle user icon"></i> </a>
+      
+                                <div class="ui simple dropdown item" onclick="location.href='/settings'" title="Settings" >
+                                    <a href="/settings"> <i class="cog icon"></i> </a>
+        
+                                <% if (privilege == "admin") { %>
+                                <div class="menu" id="settingMenu">
+                                    <a href="/users" class="item">
+                                        Manage users </a>
+                      
+                                    <a href="/skillcategories" class="item">
+                                        Manage tags</a>
+                                    
+                                </div>
+                                
+                                <% } %>
+                              </div>
+                              <a href="/logout" class="item" title="Sign Out"> <i class="  sign out alternate icon"></i> </a>
+                            </div>
+                        
+                        </div>
+
+                        <!-- Body must be inside pusher element in order to it show correctly -->
+                        <div class="contentwrapper">
+
+                                <%-body%>
+                            
+                            </div>
+
+                  </div>
+                  <!-- Sidebar Menu -->
+                  <div class="ui overlay left vertical sidebar labeled icon menu">
+                    <a href="/" class="item">
+                        <i class="home icon"></i>
+                        Home
+                    </a>
+                    <a href="/projects" class="item">
+                        <i class="folder open icon"></i>
+                        Projects
+                    </a>
+                    <a href="/myprojects" class="item">
+                        <i class="sitemap icon"></i>
+                        My projects
+                    </a>
+                    <% if (privilege != "student"){ %>
+                    <a href="/students" class="item">
+                        <i class="users icon"></i>
+                        Students
+                    </a>
+                    <% } %>
+                    <% if (privilege == "admin") { %>
+                    <a href="/users" class="item">
+                        <i class="boxes icon"></i>
+                        Manage Users
+                    </a>
+                    <a href="/skillcategories" class="item">
+                        <i class="tags icon">   </i>
+                        Manage Tags
+                    </a>
+                    <% } %>
+
+                    <a href="/about" class="item">
+                        <i class="icon"> PG  </i>
+                         About us
+                    </a>
+                  </div>
+
+            <script>
+                $(document).ready(function() {
+
+                // create sidebar and attach burger icon to menu open
+                $('.ui.sidebar')
+                .sidebar('attach events', '.burger.item');
+                });
+            </script>
+  
+            
+            <script>
+                $(document).ready(function () {
+                    // get current URL path and assign 'active' class
+                    var pathname = window.location.pathname;
+                    $('.menu > a[href="' + pathname + '"]').addClass('active');
+                })
+            </script>
+
+    <% } %>
+    
+    <!-- If on pages without the navigation bar, places content outside pusher -->
+    <%if (title == "Login | Project Gate" || title == "Register | Project Gate" || title == "Password Recovery | Project Gate") { %>
+    
+        <%-body%>
+
+    <% } %>
+
+<script src="/Semantic-UI-CSS-master/semantic.js"></script>
+<div class="ui grey inverted vertical footer segment">
+    <div class="ui center aligned fluid container">
+        <div class="ui stackable inverted grid">
+            <div class="three wide column">
+                <h4 class="ui inverted header">Community</h4>
+                <div class="ui inverted link list">
+                    <a class="item" href="#">Hola!</a>
+
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">Partners</h4>
+                <div class="ui inverted link list">
+                    <a class="item" href="#">Link 1</a>
+
+                </div>
+            </div>
+
+            <div class="seven wide right floated column">
+                <h4 class="ui inverted teal header">Some motivative text</h4>
+                <p> You could be the next potato. Do stuff and win.</p>
+                <!-- this button should be shown if you want bottom bar in login etcö also -->
+                <!--<form action="/register" target="_top">
+                    <button type="submit" class="ui large teal button">Join Today</button>
+                </form>-->
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <div class="ui stackable grid">
+
+        
+    <div class= "five wide column">
+    <img src="/Resources/tuas.png" alt="TUAS logo" class="ui centered image">
+</div>
+    
+
+
+    <div class="six wide column">
+            <img src="/Resources/firma.png" alt="theFIRMA logo" class="ui centered image">
+            <div class="ui horizontal inverted small divided link list">
+                    TheFIRMA / Turku University of Applied Sciences <br>
+                    Joukahaisenkatu 3-5, 20520 Turku<br>
+                    <br>
+                    thefirma@edu.turkuamk.fi<br>
+                    +358 44 9072 080<br>
+            </div>
+        </div>
+        <div class="five wide column">
+        <img src="/Resources/testing.jpeg" alt="testing logo" class="ui centered image">
+    </div>
+
+    </div>
+</div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        var msg = <%- JSON.stringify(msg) %>
+        if (msg.length != 0) {
+            alert(msg.join("\n"))
+        }
+    })
+    let searchParams = new URLSearchParams(window.location.search)
+    if (searchParams.has('blue')) {
+        $("*").css("background", "red");
+    }
+    if (searchParams.has('fabulous')) {
+        $("*").css("background", "linear-gradient(red,orange,yellow,green,blue,indigo,violet)");
+    }
+</script>
+</body>
+</html>

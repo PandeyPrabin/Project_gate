@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="Semantic-UI-CSS-master/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="Resources/style.css">
+    <script src="Resources/jquery-3.3.1.min.js"></script>
+    <script src="Semantic-UI-CSS-master/semantic.min.js"></script>
+    <title> Students | Project Gate </title>
+</head>
+
+<body style="background-image: url(Resources/banner.jpg); background-attachment: fixed;">
+
+    <!--/////////////////////////////////////////Navigation menu\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+    <div id="desktopMenu" class="ui fixed borderless menu ">
+        <a href="index.html" class="item">
+            <i class="home icon"></i>
+        </a>
+        <a href="projects.html" class="item"> Projects </a>
+        <a href="students.html" class="item"> Students </a>
+        <a href="about.html" class="item"> About Us </a>
+
+        <div class="ui right menu">
+            <div class="ui compact menu">
+
+                <div class="item" title="my profile">
+                    <a href="profile.html">
+                        <i class="large user circle icon"></i>
+                    </a>
+                </div>
+
+                <div class="item" title="Logout">
+                    <a href="login.html">
+                        <i class="large sign out alternate icon"></i>
+                    </a>
+                </div>
+
+
+                <div class="ui simple dropdown item">
+                    <i class="cog icon"></i>
+                    <div class="menu">
+                        <a href="usermanagement.html" class="item">
+                            Manage users </a>
+
+                        <a href="tagmanagement.html" class="item">
+                            Manage tags</a>
+
+                        <a href="myprojects.html" class="item">
+                            My projects</a>
+
+                        <a href="settings.html" class="item">
+                            Settings</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- /////////////////////////////////////Mobile menu\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+    <div id="mobileMenu" class="ui fixed menu">
+        <div class="ui simple dropdown item">
+            <i class="bars icon"></i>
+            <div class="menu">
+                <div class="item">
+                    <a href="projects.html">Projects</a>
+                </div>
+                <div class="item">
+                    <a href="students.html"> students</a>
+                </div>
+                <div class="item">
+                    <a href="about.html"> about</a>
+                </div>
+            </div>´
+
+        </div>
+        <a href="index.html" class="ui centered blue header"> Project Gate </a>
+
+        <div class="ui right menu">
+            <div class="ui simple dropdown item">
+                <i class="cog icon"></i>
+                <div class="menu">
+                    <div class="item">
+                        <a href="profile.html">Profile</a>
+                    </div>
+                    <div class="item">
+                        <a href="usermanagement.html">Manage users</a>
+                    </div>
+                    <div class="item">
+                        <a href="tagmanagement.html">Manage tags</a>
+                    </div>
+                    <div class="item">
+                        <a href="myprojects.html">My projects</a>
+                    </div>
+                    <div class="item">
+                        <a href="settings.html">Settings</a>
+                    </div>
+                    <div class="item">
+                        <a href="login.html">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <a href="login.html" title="Logout" class="logout">
+                <i class="large sign out alternate icon"></i>
+            </a>
+        </div>
+    </div>
+    <!--//////////////////////////////////Page content starts\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+    <!-- //////////////////////////////////////Student search\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\+-->
+
+    <div id="wrapper">
+
+        <h1 class="ui header"> List of students</h1>
+
+        <div class="ui stacked secondary blue  segment">
+            <div class="ui center aligned container">
+                <div class="ui form">
+                    <div class="four fields">
+
+                        <div class="field">
+                            <label>Search...</label>
+                            <div class="ui icon input">
+                                <input type="search" placeholder="Search...">
+                                <i class="search icon"></i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Skills</label>
+                            <select name="skills" multiple="" class="label ui search selection fluid dropdown">
+
+                                <option value="">All skills</option>
+                                <option value="Java"> Java</option>
+                                <option value="PHP"> PHP </option>
+                                <option value="C#"> C# </option>
+                                <option value="Lorem"> Lorem </option>
+                                <option value="Ipsum"> Ipsum </option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label>Sort By</label>
+                            <select class="ui  fluid dropdown">
+                                <option value="">Name</option>
+                                <option value=""> Degree </option>
+                                <option value=""> Year of Study </option>
+                            </select>
+
+                        </div>
+
+                        <div class="field">
+                            <label>Order by</label>
+                            <select class="ui  fluid dropdown">
+                                <option value="">ASC ↑</option>
+                                <option value=""> DESC ↓ </option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <button class="ui  primary  button" type="submit"> apply</button>
+
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+            // multiple choice dropdown 
+            $('.label.ui.dropdown')
+                .dropdown();
+        </script>
+
+
+        <!--////////////////////////////////////////////Students\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+        <div class="ui container">
+            <div class="ui segment">
+
+                <div class="ui very relaxed divided selection  middle aligned list">
+                    <div class="item">
+
+                        <a href="profile.html" class="content">
+                            <img class="ui left floated tiny image" src="Resources/placeholder.png" alt="Profile picture">
+                            <h3 class="ui header">John Doe </h3>
+                            <div class="right floated content">
+                                <div class="column">
+                                    Degree: Memes and stuff
+                                </div>
+
+                                <div class="column">
+                                    Year of study: 2
+                                </div>
+                            </div>
+                            <div class="column">Skills:
+                                <div class="ui small red label">PHP</div>
+                            </div>
+                            <div class="column">Development wishes:
+                                <div class="ui small green label">WEB</div>
+                            </div>
+                        </a>
+
+                    </div>
+
+
+
+                    <div class="item">
+                        <a href="profile.html" class="content">
+                            <img class="ui left floated tiny image" src="Resources/placeholder.png" alt="Profile picture">
+                            <h3 class="ui header">Bob Dylan </h3>
+                            <div class="right floated content">
+                                <div class="column">
+                                    Degree: elämäm kova koulu
+                                </div>
+
+                                <div class="column">
+                                    Year of study: 2
+                                </div>
+                            </div>
+                            <div class="column">Skills:
+                                <div class="ui small purple label">Photoshop</div>
+                                <div class="ui small yellow label">C#</div>
+                            </div>
+                            <div class="column">Development wishes:
+                                <div class="ui small pink label">Design</div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="item">
+                        <div class="item">
+                            <a href="profile.html" class="content">
+                                <img class="ui left floated tiny image" src="Resources/placeholder.png" alt="Profile picture">
+                                <h3 class="ui header">Steve Jobs </h3>
+                                <div class="right floated content">
+                                    <div class="column">
+                                        Degree: Uno dos tres
+                                    </div>
+
+                                    <div class="column">
+                                        Year of study: 10
+                                    </div>
+                                </div>
+                                <div class="column">Skills:
+                                    <div class="ui small red label">Java</div>
+                                </div>
+                                <div class="column">Development wishes:
+                                    <div class="ui small black label">Coding</div>
+                                </div>
+                            </a>
+                        </div>
+
+
+                    </div>
+                    <div class="item">
+                        <a href="project.html" class="content">
+                            <img class="ui left floated tiny image" src="Resources/placeholder.png" alt="Profile picture">
+                            <h3 class="ui header">Michael jörgenssön </h3>
+                            <div class="right floated content">
+                                <div class="column">
+                                    Degree: Useless waste
+                                </div>
+
+                                <div class="column">
+                                    Year of study: 1
+                                </div>
+                            </div>
+                            <div class="column">Skills:
+                                <div class="ui small red label">PHP</div>
+                            </div>
+                            <div class="column">Development wishes:
+                                <div class="ui small red label">PHP</div>
+                            </div>
+                        </a>
+                    </div>
+
+
+
+                </div>
+                <div class="ui pagination menu">
+                    <a class="icon item">
+                        <i class="left arrow icon"></i>
+                    </a>
+                    <a class="active item">
+                        1
+                    </a>
+                    <div class=" item">
+                        2
+                    </div>
+                    <a class="item">
+                        3
+                    </a>
+                    <a class="disabled item">
+                        ...
+                    </a>
+                    <a class="item">
+                        12
+                    </a>
+                    <a class="icon item">
+                        <i class="right arrow icon"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ui hidden  divider"></div>
+        </div>
+
+        <!--Wrapper ends-->
+    </div>
+    <!--/////////////////////////////////////Page footer\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+    <div class="ui black inverted vertical footer segment">
+
+        <div class="ui center aligned container">
+            <div class="ui stackable inverted grid">
+                <div class="three wide column">
+                    <h4 class="ui inverted header">Community</h4>
+                    <div class="ui inverted link list">
+                        <a class="item" href="#">Lorem ipsum</a>
+                    </div>
+                </div>
+
+                <div class="three wide column">
+                    <h4 class="ui inverted header">Partners</h4>
+                    <div class="ui inverted link list">
+                        <a class="item" href="#">Link 1</a>
+                    </div>
+                </div>
+
+                <div class="seven wide right floated column">
+                    <h4 class="ui inverted teal header">Some motivative text</h4>
+                    <p> You could be the next potato. Do stuff and win.</p>
+                    <form action="register.html" target="_top">
+                        <button type="submit" class="ui large teal button">Join Today</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="ui inverted section divider"></div>
+            <img src="Resources/firma.png" alt="theFIRMA logo" class="ui centered  image">
+            <div class="ui horizontal inverted small divided link list">
+                <a class="item" href="http://thefirma.fi" target="_blank">theFIRMA ist nicht hier!</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

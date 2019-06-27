@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="Semantic-UI-CSS-master/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="Resources/style.css">
+    <script src="Resources/jquery-3.3.1.min.js"></script>
+    <script src="Semantic-UI-CSS-master/semantic.min.js"></script>
+    <script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
+    <!-- needed for calendar-->
+
+    <title> Project editor | Project Gate </title>
+    <script>
+        // used for form validation
+
+        $(document).ready(function () {
+            $('.ui.form')
+                .form({
+                    fields: {
+                        projectName: {
+                            identifier: 'projectName',
+                            rules: [{
+                                type: 'empty',
+                                prompt: 'Please give a name to the project'
+                            }]
+                        },
+                        projectManager: {
+                            identifier: 'projectManager',
+                            rules: [{
+                                type: 'empty',
+                                prompt: 'Please enter project managers name!'
+                            }]
+                        },
+                        status: {
+                            identifier: 'status',
+                            rules: [{
+                                type: 'empty',
+                                prompt: 'Please enter project status'
+                            }]
+                        },
+                        description: {
+                            identifier: 'description',
+                            rules: [{
+                                    type: 'empty',
+                                    prompt: 'Description cannot be empty!'
+                                },
+                                {
+                                    type: 'maxLength[500]',
+                                    prompt: 'Description has exceeded the maximum {ruleValue} characters'
+                                }
+                            ]
+                        },
+
+                    }
+                });
+        });
+    </script>
+
+
+</head>
+
+<body style="background-image: url(Resources/banner.jpg); background-attachment: fixed;">
+
+    <!--/////////////////////////////////////////Navigation menu\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+    <div id="desktopMenu" class="ui fixed borderless menu ">
+        <a href="index.html" class="item">
+            <i class="home icon"></i>
+        </a>
+        <a href="projects.html" class="item"> Projects </a>
+        <a href="students.html" class="item"> Students </a>
+        <a href="about.html" class="item"> About Us </a>
+
+        <div class="ui right menu">
+            <div class="ui compact menu">
+
+                <div class="item" title="my profile">
+                    <a href="profile.html">
+                        <i class="large user circle icon"></i>
+                    </a>
+                </div>
+
+                <div class="item" title="Logout">
+                    <a href="login.html">
+                        <i class="large sign out alternate icon"></i>
+                    </a>
+                </div>
+
+
+                <div class="ui simple dropdown item">
+                    <i class="cog icon"></i>
+                    <div class="menu">
+                        <a href="usermanagement.html" class="item">
+                            Manage users </a>
+
+                        <a href="tagmanagement.html" class="item">
+                            Manage tags</a>
+
+                        <a href="myprojects.html" class="item">
+                            My projects</a>
+
+                        <a href="settings.html" class="item">
+                            Settings</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- /////////////////////////////////////Mobile menu\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+    <div id="mobileMenu" class="ui fixed menu">
+        <div class="ui simple dropdown item">
+            <i class="bars icon"></i>
+            <div class="menu">
+                <div class="item">
+                    <a href="projects.html">Projects</a>
+                </div>
+                <div class="item">
+                    <a href="students.html"> students</a>
+                </div>
+                <div class="item">
+                    <a href="about.html"> about</a>
+                </div>
+            </div>´
+
+        </div>
+        <a href="index.html" class="ui centered blue header"> Project Gate </a>
+
+        <div class="ui right menu">
+            <div class="ui simple dropdown item">
+                <i class="cog icon"></i>
+                <div class="menu">
+                    <div class="item">
+                        <a href="profile.html">Profile</a>
+                    </div>
+                    <div class="item">
+                        <a href="usermanagement.html">Manage users</a>
+                    </div>
+                    <div class="item">
+                        <a href="tagmanagement.html">Manage tags</a>
+                    </div>
+                    <div class="item">
+                        <a href="myprojects.html">My projects</a>
+                    </div>
+                    <div class="item">
+                        <a href="settings.html">Settings</a>
+                    </div>
+                    <div class="item">
+                        <a href="login.html">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <a href="login.html" title="Logout" class="logout">
+                <i class="large sign out alternate icon"></i>
+            </a>
+        </div>
+    </div>
+    <!--//////////////////////////////////Page content starts\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+    <div id="wrapper">
+        <div class="ui large header">Add/Edit Project
+            <a class="ui blue label">
+                <i class="trash icon"></i>
+                REMOVE PROJECT</a>
+        </div>
+
+        <div class="ui hidden divider"></div>
+
+        <div class="ui container">
+            <div class="ui secondary segment">
+                <form class="ui form">
+
+                    <div class="ui error message"></div>
+                    <div class="two fields">
+                        <div class="required field">
+                            <label>Project name</label>
+                            <input type="text" name="projectName" placeholder="Project Name">
+                        </div>
+
+                        <div class="field">
+                            <label>Required skills
+                                <a href="tagmanagement.html">
+                                    <i class="plus icon"></i> Manage tags </a>
+                            </label>
+
+                            <select name="skills" multiple="" class="label ui search selection fluid dropdown">
+                                <option value="">Required skills</option>
+                                <option value="Java"> Java</option>
+                                <option value="PHP"> PHP </option>
+                                <option value="C#"> C# </option>
+                                <option value="SQL"> SQL </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="two fields">
+                        <div class="required field">
+                            <label>Project Manager</label>
+                            <select name="projectManager" class="label ui search  selection fluid dropdown">
+                                <option value=""> Manager Name </option>
+                                <option value="web design"> Smith John </option>
+                                <option value="what"> Leppänen Julius </option>
+                                <option value="nope">Wallintörmä Sakari</option>
+                                <option value="test"> ushkabaza shindmana </option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label>Open positions </label>
+                            <select name="skills" multiple="" class="label ui search  selection fluid dropdown">
+                                <option value=""> Select positions </option>
+                                <option value="web design"> FrontEnd </option>
+                                <option value="what"> Indesign </option>
+                                <option value="nope">nope</option>
+                                <option value="test"> test </option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="two fields">
+                        <div class="required field">
+                            <label>Status</label>
+                            <select name="status" class="label ui selection fluid dropdown">
+                                <option value=""> Project Status </option>
+                                <option value="web design"> Incoming </option>
+                                <option value="what"> Ongoing </option>
+                                <option value="nope">Finished</option>
+                                <option value="test"> test </option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label>Deadline</label>
+                            <div class="ui calendar" id="deadline">
+                                <div class="ui input left icon">
+                                    <i class="calendar icon"></i>
+                                    <input type="text" placeholder="e.g. 16.5.2018">
+                                </div>
+                            </div>
+                            <br/>
+                        </div>
+                    </div>
+                    <div class="ui stackable grid">
+
+                        <div class="four wide column" data-tooltip="Upload project picture" data-position="right center">
+
+                            <label for="projectPicture" class="ui small picture">
+                                <img src="Resources/square-image.png" class="ui left floated small image" alt="Project image" onmouseover="" style="cursor: pointer">
+                            </label>
+                            <input type="file" accept="image/*" id="projectPicture" style="display:none">
+
+                        </div>
+
+                        <div class="twelve wide column">
+
+                            <div class="required field">
+
+                                <label>Project description (max xxx characters!) </label>
+                                <textarea name="description" placeholder="Explain something smart here..."></textarea>
+
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        // multiple choice dropdown 
+                        $('.label.ui.dropdown')
+                            .dropdown();
+                    </script>
+
+
+
+                    <div class="ui form">
+                        <div class="four fields">
+                            <div class="field">
+                                <label>Start date</label>
+                                <div class="ui calendar" id="rangestart">
+                                    <div class="ui input left icon">
+                                        <i class="calendar icon"></i>
+                                        <input type="text" placeholder="Start">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>End date</label>
+                                <div class="ui calendar" id="rangeend">
+                                    <div class="ui input left icon">
+                                        <i class="calendar icon"></i>
+                                        <input type="text" placeholder="End">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ui checkbox" data-tooltip="Checking this box will activate lorem ipsum, dolo..." data-position="right center">
+                        <input type="checkbox" name="example">
+                        <label>Project Completed</label>
+                    </div>
+                    <div class="ui hidden divider"></div>
+
+
+                    <script>
+                        //calendar popup
+                        $('#deadline').calendar({
+                            type: 'date',
+                            monthFirst: false,
+                            formatter: {
+                                date: function (date, settings) {
+                                    if (!date) return '';
+                                    var day = date.getDate();
+                                    var month = date.getMonth() + 1;
+                                    var year = date.getFullYear();
+                                    return day + '.' + month + '.' + year;
+                                }
+                            }
+                        });
+
+                        //start date
+                        $('#rangestart').calendar({
+                            type: 'date',
+                            monthFirst: false,
+                            formatter: {
+                                date: function (date, settings) {
+                                    if (!date) return '';
+                                    var day = date.getDate();
+                                    var month = date.getMonth() + 1;
+                                    var year = date.getFullYear();
+                                    return day + '.' + month + '.' + year;
+                                }
+                            },
+                            endCalendar: $('#rangeend')
+                        });
+                        //end date
+                        $('#rangeend').calendar({
+                            type: 'date',
+                            monthFirst: false,
+                            formatter: {
+                                date: function (date, settings) {
+                                    if (!date) return '';
+                                    var day = date.getDate();
+                                    var month = date.getMonth() + 1;
+                                    var year = date.getFullYear();
+                                    return day + '.' + month + '.' + year;
+                                }
+                            },
+                            startCalendar: $('#rangestart')
+                        });
+                    </script>
+
+                    <button class="ui blue button" type="submit">APPLY</button>
+                </form>
+
+
+                <div class="ui hidden divider"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!--Wrapper ends-->
+
+
+    <!--/////////////////////////////////////Page footer\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+    <div class="ui black inverted vertical footer segment">
+
+        <div class="ui center aligned container">
+            <div class="ui stackable inverted grid">
+                <div class="three wide column">
+                    <h4 class="ui inverted header">Community</h4>
+                    <div class="ui inverted link list">
+                        <a class="item" href="#">Lorem ipsum</a>
+                    </div>
+                </div>
+
+                <div class="three wide column">
+                    <h4 class="ui inverted header">Partners</h4>
+                    <div class="ui inverted link list">
+                        <a class="item" href="#">Link 1</a>
+                    </div>
+                </div>
+
+                <div class="seven wide right floated column">
+                    <h4 class="ui inverted teal header">Some motivative text</h4>
+                    <p> You could be the next potato. Do stuff and win.</p>
+                    <form action="register.html" target="_top">
+                        <button type="submit" class="ui large teal button">Join Today</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="ui inverted section divider"></div>
+            <img src="Resources/firma.png" alt="theFIRMA logo" class="ui centered  image">
+            <div class="ui horizontal inverted small divided link list">
+                <a class="item" href="http://thefirma.fi" target="_blank">theFIRMA ist nicht hier!</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

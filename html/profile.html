@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="Semantic-UI-CSS-master/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="Resources/style.css">
+    <script src="Resources/jquery-3.3.1.min.js"></script>
+    <script src="Semantic-UI-CSS-master/semantic.min.js"></script>
+    <title> Profile | Project Gate </title>
+</head>
+
+<body style="background-image: url(Resources/banner.jpg); background-attachment: fixed;">
+
+    <!--/////////////////////////////////////////Navigation menu\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+    <div id="desktopMenu" class="ui fixed borderless menu ">
+        <a href="index.html" class="item">
+            <i class="home icon"></i>
+        </a>
+        <a href="projects.html" class="item"> Projects </a>
+        <a href="students.html" class="item"> Students </a>
+        <a href="about.html" class="item"> About Us </a>
+
+        <div class="ui right menu">
+            <div class="ui compact menu">
+
+                <div class="item" title="my profile">
+                    <a href="profile.html">
+                        <i class="large user circle icon"></i>
+                    </a>
+                </div>
+
+                <div class="item" title="Logout">
+                    <a href="login.html">
+                        <i class="large sign out alternate icon"></i>
+                    </a>
+                </div>
+
+
+                <div class="ui simple dropdown item">
+                    <i class="cog icon"></i>
+                    <div class="menu">
+                        <a href="usermanagement.html" class="item">
+                            Manage users </a>
+
+                        <a href="tagmanagement.html" class="item">
+                            Manage tags</a>
+
+                        <a href="myprojects.html" class="item">
+                            My projects</a>
+
+                        <a href="settings.html" class="item">
+                            Settings</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- /////////////////////////////////////Mobile menu\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+    <div id="mobileMenu" class="ui fixed menu">
+        <div class="ui simple dropdown item">
+            <i class="bars icon"></i>
+            <div class="menu">
+                <div class="item">
+                    <a href="projects.html">Projects</a>
+                </div>
+                <div class="item">
+                    <a href="students.html"> students</a>
+                </div>
+                <div class="item">
+                    <a href="about.html"> about</a>
+                </div>
+            </div>´
+
+        </div>
+        <a href="index.html" class="ui centered blue header"> Project Gate </a>
+
+        <div class="ui right menu">
+            <div class="ui simple dropdown item">
+                <i class="cog icon"></i>
+                <div class="menu">
+                    <div class="item">
+                        <a href="profile.html">Profile</a>
+                    </div>
+                    <div class="item">
+                        <a href="usermanagement.html">Manage users</a>
+                    </div>
+                    <div class="item">
+                        <a href="tagmanagement.html">Manage tags</a>
+                    </div>
+                    <div class="item">
+                        <a href="myprojects.html">My projects</a>
+                    </div>
+                    <div class="item">
+                        <a href="settings.html">Settings</a>
+                    </div>
+                    <div class="item">
+                        <a href="login.html">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <a href="login.html" title="Logout" class="logout">
+                <i class="large sign out alternate icon"></i>
+            </a>
+        </div>
+    </div>
+    <!--//////////////////////////////////Page content starts\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+    <div id="wrapper">
+        <div class="ui huge header">Profile
+            <a href="editprofile.html" title="edit profile" class="ui blue label">
+                <i class="cog icon"></i> Edit </a>
+        </div>
+        <div class="ui  stackable grid">
+            <div class="five wide column">
+                <div class="ui  card">
+                    <div class="image">
+                        <img src="Resources/placeholder.png" alt="profile image">
+                    </div>
+                    <div class="content">
+                        <div class="header">John Doe</div>
+
+                        <div class="description" title="Phone number">
+                            <i class="phone icon"></i>
+                            050 1234 567
+                        </div>
+                        <div class="description" title="Email address">
+                            <i class="mail icon"></i>
+                            john.doe@loremmail.ipsum
+                        </div>
+                        <div class="description" title="Degree">
+                            <i class="graduation icon"></i>
+                            Memes & Science
+                        </div>
+                        <div class="description" title="Year">
+                            <i class="calendar icon"></i>
+                            Year of Study: 2
+                        </div>
+
+
+                    </div>
+                    <div class="extra content">
+                        <a href="addstudent.html" class="ui  primary animated button" tabindex="0" title="Assign to a project">
+                            <div class="visible content">Assign</div>
+                            <div class="hidden content">
+                                to project
+                            </div>
+                        </a>
+
+                        <div class="ui right floated green animated button" tabindex="0" title="Suggest a project">
+                            <div class="visible content">Suggest</div>
+                            <div class="hidden content">
+                                a project
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="eleven wide column">
+                <div class="ui top attached tabular menu">
+                    <a class=" active item" data-tab="Bio">
+                        <i class="icon edit sign"></i>Bio </a>
+                    <a class="item" data-tab="Skills">Skills</a>
+                    <a class="item" data-tab="Projects">Projects</a>
+                </div>
+
+                <div class="ui bottom attached active tab segment" data-tab="Bio">
+                    <div class="ui content">
+
+                        <h3 class="ui blue header"> Positions of interest: </h3>
+                        <div class="ui small yellow label">Programmer</div>
+                        <div class="ui small green label"> Graphic Designer </div>
+                        <h2 class="dividing ui header"> Bio</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur ante id leo scelerisque
+                            lacinia. Etiam efficitur pulvinar erat eget dignissim. Sed volutpat blandit accumsan. Donec eu
+                            orci lobortis, dictum diam nec, pharetra magna.Proin quis vestibulum eros. Donec erat leo, luctus
+                            sit amet vestibulum id, condimentum vel ligula.</p>
+                        <p> Morbi a sem lobortis, consectetur sem molestie, luctus mauris. Suspendisse rutrum et lectus eu posuere.
+                            Morbi varius dui tempor consequat tempus. Nam at ante erat. Vestibulum quis turpis molestie,
+                            condimentum eros in, efficitur erat. Orci varius natoque penatibus et magnis dis parturient montes,
+                            nascetur ridiculus mus. Integer vestibulum blandit nulla, vel imperdiet enim mollis vel. Curabitur
+                            rhoncus ligula eget tortor vehicula, quis efficitur sapien lobortis. Quisque a congue felis.
+                            Praesent convallis consequat pretium.</p>
+                        <p>Suspendisse vulputate orci ac quam ullamcorper dapibus. Cras posuere tempor quam a ullamcorper. Pellentesque
+                            vel purus in lacus pretium fringilla. Cras sollicitudin blandit posuere. Nam orci ligula, tristique
+                            eget nisi ac, bibendum consequat elit. Sed quis pharetra est. Phasellus risus nisi, ultricies
+                            eu pulvinar quis, aliquet quis dui. Duis elementum sapien pellentesque tortor vestibulum, eu
+                            vehicula lorem sodales. Nullam commodo nulla non finibus mattis. Suspendisse nec facilisis quam,
+                            a tristique velit. Nam turpis lacus, pulvinar tincidunt odio ut, vestibulum egestas ex. Morbi
+                            quis ullamcorper eros.</p>
+                        <h2 class="dividing ui header"> CV</h2>
+                        <a href="#">CV link</a>
+                        <div class="ui hidden divider"></div>
+                        <a href="projects.html" class="ui primary button"> Find projects</a>
+                    </div>
+                </div>
+
+
+                <div class="ui bottom attached tab segment" data-tab="Skills">
+                    <div class="ui  stackable grid">
+                        <div class="eight wide column">
+
+                            <h2 class="dividing ui header">Skills</h2>
+                            <div class="ui small blue label">PHP</div>
+                            <div class="ui star rating" data-rating="3" data-max-rating="5"></div>
+                            <div class="ui hidden divider"></div>
+                            <div class="ui small yellow label">C++</div>
+                            <div class="ui star rating" data-rating="1" data-max-rating="5"></div>
+                            <div class="ui hidden divider"></div>
+                            <div class="ui small pink label">memes</div>
+                            <div class="ui star rating" data-rating="3" data-max-rating="5"></div>
+                        </div>
+                        <div class="eight wide column">
+                            <h2 class="dividing ui header">Skill Development wishes</h2>
+                            <div class="ui small yellow label">Potato</div>
+                            <div class="ui small orange label">Carrot</div>
+                            <div class="ui small pink label">YMCA</div>
+                            <div class="ui small blue label">WoW</div>
+                            <div class="ui small green label">Lorem ipsum</div>
+                            <div class="ui small yellow label">Lorem ipsum</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui bottom attached tab segment" data-tab="Projects">
+                    <h1 class="ui header">SUGGESTED PROJECTS</h1>
+                    <table class="ui selectable unstackable striped table">
+                        <thead>
+                            <tr>
+                                <th>Project name</th>
+                                <th>Status</th>
+                                <th>Role</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="selectable">
+                                    <a href="project.html" target="_blank"> Sample project</a>
+                                </td>
+                                <td>incoming</td>
+                                <td class="ui   purple label">Graphic designer</td>
+                            </tr>
+
+                            <tr>
+                                <td class="selectable">
+                                    <a href="project.html" target="_blank"> MFGA </a>
+                                </td>
+                                <td>Ded</td>
+                                <td class="ui small red label">Tuner</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h1 class="ui header">PROJECT HISTORY</h1>
+                    <table class="ui selectable unstackable striped  table">
+
+                        <thead>
+
+                            <tr>
+                                <th>Project name</th>
+                                <th>Date</th>
+                                <th>Role</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="selectable">
+                                    <a href="project.html"> Sample project</a>
+                                </td>
+                                <td>Ongoing</td>
+                                <td class="ui small green label">Tester</td>
+                            </tr>
+
+                            <tr>
+                                <td class="selectable">
+                                    <a href="project.html"> Useless project </a>
+                                </td>
+                                <td>01/2018-03/2018</td>
+                                <td class="ui small purple label">Web Designer</td>
+                            </tr>
+
+                            <tr class="disabled">
+                                <td>Sample project 2</td>
+                                <td>08/2016-11/2016</td>
+                                <td class="ui small pink label">Something</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <script>
+                    //Activates star rating on skills tab
+                    $('.ui.rating')
+                        .rating('disable');
+                </script>
+
+                <script>
+                    // Activates profile tabs
+                    $('.top.menu .item').tab();
+                </script>
+
+            </div>
+
+        </div>
+
+        <!--Wrapper ends-->
+    </div>
+
+    <!--/////////////////////////////////////Page footer\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+    <div class="ui black inverted vertical footer segment">
+
+        <div class="ui center aligned container">
+            <div class="ui stackable inverted grid">
+                <div class="three wide column">
+                    <h4 class="ui inverted header">Community</h4>
+                    <div class="ui inverted link list">
+                        <a class="item" href="#">Lorem ipsum</a>
+                    </div>
+                </div>
+
+                <div class="three wide column">
+                    <h4 class="ui inverted header">Partners</h4>
+                    <div class="ui inverted link list">
+                        <a class="item" href="#">Link 1</a>
+                    </div>
+                </div>
+
+                <div class="seven wide right floated column">
+                    <h4 class="ui inverted teal header">Some motivative text</h4>
+                    <p> You could be the next potato. Do stuff and win.</p>
+                    <form action="register.html" target="_top">
+                        <button type="submit" class="ui large teal button">Join Today</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="ui inverted section divider"></div>
+            <img src="Resources/firma.png" alt="theFIRMA logo" class="ui centered  image">
+            <div class="ui horizontal inverted small divided link list">
+                <a class="item" href="http://thefirma.fi" target="_blank">theFIRMA ist nicht hier!</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

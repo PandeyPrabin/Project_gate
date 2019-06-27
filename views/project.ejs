@@ -1,0 +1,200 @@
+<div class="ui secondary segment">
+<div class="ui large header wordBreakDesc" title="<%-data.name%>">
+    <%-data.name%>
+    <%if (editbutton) { %>
+    <a class="ui blue label" href="/editproject/<%-data.id%>">
+            <i class="cog icon"></i> Edit</a>
+    <%} %>
+
+    <% var button = 0; data.participants.forEach(function(part){ %>
+        <% if (part.participant.id == userid) {%>
+            <% button = 1%>
+    <% }}); %>
+    <% data.applications.forEach(function(application){ %>
+        <% if (application.applicant == userid && (application.status != 'accepted' && application.status != 'rejected')) {%>
+            <% button = 2%>
+    <% }}); %>
+    <% if (data.manager == userid) { button = 1}%>
+    <%if (button == 0) {%>
+        <button class="ui blue label button" onclick="showmodal()">
+                 Apply to the project</button>
+<% }%>
+<%if (button == 2) {%>
+    <div class="ui green label">
+            Applied!</div>
+<% }%>
+
+</div>
+</div>
+<div class="ui stackable grid">
+
+        <div class="five wide column">
+            <div class="ui blue card">
+                <div class="image">
+                        <img src="<% if(data.imagepath) { %><%-data.imagepath%><% } else { %>/Resources/square-image.png<% } %>" alt="Project placeholder">
+                        <div class="ui blue right ribbon label">
+                                <%-data.status%>
+                        </div>
+
+                </div>
+
+                <div class="extra content">
+                    <div class="ui label" style="max-width: 49% !important;"> Start date:
+                        <div class="ui small green label"> <%-data.startdatee%></div> 
+                    </div>
+
+                    <div class="ui right floated label" style="max-width: 49% !important;">Deadline:
+                        <div class="ui small red label"> <%-data.deadlinee%></div>
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+
+        <div class="eleven wide column">
+
+            <div class="ui segment">
+
+                <div class="ui header descriptionTruncate" >Project Manager: <%if (data.manager) {%>
+                    <%-data.manager.firstname%> <%-data.manager.lastname%>  (<%-data.manager.email %>)
+                    <% }%>
+
+                </div>
+                <div class="ui divider"></div> 
+                Open positions:
+                <%data.openpositions.forEach(function (position) { %>
+                    <div style="background:<%-position.position.color%>" class="ui small label"> <span class="inv"> <%-position.position.name%> </span> </div>
+                    <%})%>
+
+                <div class="ui divider"></div>
+                Required Skills:
+                <%data.skills.forEach(function (skill) { %>
+                    <div <% if (skill.category) { %> style="background:<%-skill.category.color%>"<% } %> class="ui small label listTruncate" ><span class="inv"> <%-skill.name%> </span> </div>
+                    <%})%>
+
+            </div>
+
+            <div class="ui segment" style="max-height: 350px; overflow-y: scroll;">
+                <h2 class="ui header">Description</h2>
+                <p class="wordBreakDesc"> <% var description = data.description.split("\n").join("<br>")%>
+                    <%-description%></p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+<div class="ui big modal apply">
+    <div class="header">Apply to project <%-data.name%></div>
+    <div style="width: 90%;" class="content" >
+        <form id="applyform" class="ui form modalform" method="post" action="/project/apply/<%-data.id%>">
+            <h4 class="ui dividing header">Select position(s)</h4>
+            <div class="field">
+                <select class="ui fluid search dropdown" name="positions[]" multiple="">
+                        <% if (data.openpositions) { %>
+                        <% data.openpositions.forEach(function(pos){ %>
+                            <option><%-pos.position.name%></option>
+                        <% })}%>
+                </select>
+            </div>
+            <h4 class="ui dividing header">Select skill(s)</h4>
+            <div class="field">
+                <select class="ui fluid search dropdown" name="skills[]" multiple="">
+                        <% if (data.skills) { %>
+                        <% data.skills.forEach(function(skill){ %>
+                            <option><%-skill.name%></option>
+                        <% })}%>
+                </select>
+            </div>
+            <h4 class="ui dividing header">Write your application</h4>
+            <div class="field">
+            <textarea name="applicationtext" id="applicationtext"></textarea>
+            </div>
+            <input type="hidden" value="<%-userid%>" name="userid">
+            <div class="ui error message"></div>
+        </form>
+    </div>
+        <div class="actions">
+                <div class="ui blue cancel button">Cancel</div>
+                <input type="submit" value="Submit" form="applyform" class="ui blue button">
+            </div>
+</div>
+
+
+<% if (privilege != "student"){ %>   <!-- Only project managers and admins can see project members -->
+<div class="ui large header">Project Members
+        <%if (editbutton) { %>
+            <a class="ui small blue label" href="/project/manage/<%-data.id%>">Manage Members</a>
+            <%} %>
+</div>
+<table class="ui unstackable selectable fixed celled table">
+    <thead>
+        <tr>
+            <th>Project member</th>
+            <th>Status</th>
+            <th>Role</th>
+
+        </tr>
+    </thead>
+    <tbody>           
+            <%data.participants.forEach(function (part) { %>
+                <tr>
+                        <td class="selectable">
+                                <a href="/profile/<%-part.participant.id%>"><%-part.participant.firstname%> <%-part.participant.lastname%></a>
+                        </td>
+                    <td>Current</td>
+                    <% part.positions.forEach(function(pos) { %>
+                        <% if (pos.position) {%>
+                    <td style="background:<%-pos.position.color%>"class="ui label"> <span class="inv"> <%-pos.position.name%> </span> </td>
+                    <% }})%>
+
+                </tr>
+            <% })%>
+    </tbody>
+</table>
+</div>
+<% } %>
+<script>
+
+    function showmodal() {
+        $(".big.modal").modal('show')
+        inline: true
+    }
+    $(function () {
+        $(".apply").modal({
+            closable: true,
+        });
+
+        $(".apply").modal({
+            onApprove: function () {
+                window.alert('Terms accepted!');
+            }
+        })
+        $('.ui.dropdown')
+            .dropdown()
+        $('.ui.dropdown').on('click', function () {
+            colors()
+        })
+    })
+    function colors() {
+        var tags = document.getElementsByClassName("ui label")
+        var categories = <%- JSON.stringify(categories) %>
+            var skills = <%- JSON.stringify(data.skills) %>
+            Array.from(tags).forEach(function (tag) {
+                category = ''
+                category = categories.find(o => o.name == tag.getAttribute('data-value'))
+                skill = ''
+                skill = skills.find(o => o.name == tag.getAttribute('data-value'))
+                if (category) {
+                    tag.style = "background:" + category.color
+                }
+                if (category && skill) {
+                    tag.style = "background:" + category.color
+                } else if (skill) {
+                    tag.style = "background:" + skill.category.color
+                }
+            })
+    }
+</script>

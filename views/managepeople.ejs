@@ -1,0 +1,256 @@
+<!-- ================== PARTICIPANTS TABLE ================== --> 
+<div class="ui secondary segment">
+    <div class="ui huge header">Manage project members</div>
+</div>
+<div class="ui container">
+<div class="ui secondary segment">
+<form id="participantform" class="ui form" method="post" action="?">
+    <div class="ui dividing huge header">Participants</div>
+    <table class="ui unstackable selectable celled table" id="participantstable">
+        <tr>
+            <th>Email</th>
+            <th>Edit rights</th>
+            <th>Positions</th>
+            <th>Delete</th>
+        </tr>
+        <% data.participants.forEach(function(part){ %>
+        <% if (part) {} %>
+        <tr>
+            <td>
+                    <input type="text" name="participantsemails[]" value="<%-part.participant.email%>">
+            </td>
+            <td>
+                    <div class="ui checkbox">
+                    <input name="edits[]" type="checkbox" <% if (part.edit){%>checked<%}%>>
+                    <label></label>
+                </div>
+            </td>
+            <td>
+                <select class="ui fluid search dropdown" name="positions[]" multiple="">
+                    <% categories.forEach(function(category){ var selected = 0%>
+                        <% part.positions.forEach(function(pos){ %>
+                            <% if (category.id == pos.position){ %>
+                                <option selected value="<%-category.name%>"><%-category.name%></option>
+                                <% selected = 1 %>
+                        <% }})%>
+                        <% if (selected == 0){ %>
+                            <option><%-category.name%></option>
+                        <%  } %>
+                    <%  }) %>
+                </select>
+            </td>
+            <td>
+                    <button class="ui icon button"type="button" class="delete" onclick="removerow(this)"><i class="minus icon"></i></button>
+            </td>
+        </tr>
+        <% }) %>
+            <button class="ui icon button" type="button" id="createnewparticipant"><i class="plus icon"></i></button>
+            <input type="hidden" id="data" name="data" value="">
+        </table>
+    </div>
+    <button type="submit" id="submitbutton" class="ui participantstablesubmit button">Save changes</button>
+</form>
+
+<!-- ================== MODAL HTML ================== --> 
+
+<div class="ui big modal apply">
+    <div class="header projectheader">Apply to project <%-data.name%></div>
+    <div style="width: 90%;" class="content" >
+        <form id="applicationform" class="ui form" method="post" action="?">
+            <div class="field dividing">
+                <pre class="wordBreak" name="applicationtext" id="applicationtext"> </pre>
+            </div>
+            <input class="projectidhidden" type="hidden" value="" name="projectid" id="projectid">
+        </form>
+    </div>
+    <div class="actions">
+        <div class="ui blue cancel button">Cancel</div>
+        <input type="submit" value="Accept" form="applicationform" class="ui blue button">
+    </div>
+</div>
+
+<!-- ================== APPLICATION TABLE ================== --> 
+<div class="ui divider"></div>
+<div class="ui secondary segment">
+<div class="ui dividing huge header">Applications</div>
+
+    <table class="ui selectable fixed celled table">
+        <thead>
+            <tr>
+                <th>Applicant</th>
+                <th>Applied</th>
+                <th>Role</th>
+                <th>Skills</th>
+                <th style="width: 75px">Actions</th>
+            </tr>
+        </thead>
+        <tbody>           
+                <% if (data.applications) {%>
+                    <% data.applications.forEach(function(application) { %>
+                        <% if (application.status == "pending") {%>
+                    <tr class="clickablerow" data-href="<%-application.id%>">
+                            <td class="selectable headerTruncate">
+                                    <a href="/profile/<%application.applicant%>" target="_BLANK"><%-application.applicant.firstname%> <%-application.applicant.lastname%></a>
+                                </td>
+                        <td><div><%-application.applied%></div></td>
+
+                        <td>
+                                <% application.positions.forEach(function(pos) { %>
+                                    <div style="background:<%-pos.color%>"class="ui label"><%-pos.name%></div>
+                                    <% })%>
+                        </td>
+                        <td>
+
+                        <% application.skills.forEach(function(skill) { %>
+                            <% if (skill.category) {%>
+                            <div style="background:<%-skill.category.color%>"class="ui label"><%-skill.name%></div>
+                            <% }})%>
+                        </td>
+                        <td>
+                            <form method="post" action="/project/accept/<%-application.id%>">
+                                <input type="hidden" name="projectid" value="<%-data.id%>" />
+                                <button type="submit"><i class="check  icon" title=" Accept"></i></button>
+                            </form>
+                            <form method="post" action="/project/reject/<%-application.id%>">
+                                <input type="hidden" name="projectid" value="<%-data.id%>" />
+                                <button type="submit"><i class="times icon" title="Reject"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }})}%>
+        </tbody>
+    </table>    
+</div>
+</div>
+<script>
+        function removerow(a) {
+        a.parentNode.parentNode.remove()
+    }
+    jQuery(document).ready(function($) {
+        $(".clickablerow").click(function() {
+            var applicationid = $(this).data("href")
+            var applications = <%- JSON.stringify(data.applications) %>
+            var application
+            applications.forEach(function(appl){
+                if (appl._id == applicationid) {
+                    application = appl
+                }
+            })
+            var projectid = <%- JSON.stringify(data.id) %>;
+            console.log(projectid)
+            document.getElementById("applicationform").action = "/project/accept/" + applicationid
+            document.getElementById("applicationtext").innerHTML = application.applicationtext
+            document.getElementById("projectid").value = projectid
+            $(".big.modal").modal('show')
+        })
+        $('.ui.dropdown')
+            .dropdown({
+                maxSelections: 6
+            })
+        $('.ui.dropdown').on('click', function(){
+            colors()
+        })
+        colors()
+    })
+    function colors() {
+        var tags = document.getElementsByClassName("ui label")
+        var categories = <%- JSON.stringify(categories) %>
+        Array.from(tags).forEach(function(tag){
+            category = ''
+            category = categories.find(o => o.name == tag.getAttribute('data-value'))
+            if (category) {
+                tag.style = "background:" + category.color
+            }
+        })
+    }
+    window.onload = function () {
+        colors()
+        document.getElementById("participantform").onsubmit = function () {
+            var data = []
+            var selects = document.getElementsByName("positions[]")
+            selects.forEach(function (select) {
+                var positions = []
+                $(select).val().forEach(function (pos) {
+                    positions.push({ position: pos })
+                })
+                data.push(positions)
+            })
+            document.getElementById("data").value = JSON.stringify(data)
+        }
+        document.getElementById("createnewparticipant").onclick = function () {
+            var row = document.createElement("tr"),
+                cell = document.createElement("td"),
+                field = document.createElement("input"),
+
+                checkbox = document.createElement("input"),
+                cell2 = document.createElement("td"),
+                div = document.createElement("div"),
+                label = document.createElement("label"),
+
+                cell3 = document.createElement("td"),
+                select = document.createElement("select"),
+
+                cell4 = document.createElement("td"),
+                button = document.createElement("button")
+
+            field.name = "participantsemails[]"
+            field.type = "text"
+            cell.appendChild(field)
+            row.appendChild(cell)
+
+            div.classList = "ui checkbox"
+            checkbox.name = "edits[]"
+            checkbox.type = "checkbox"
+            div.appendChild(checkbox)
+            div.appendChild(label)
+            cell2.appendChild(div)
+            row.appendChild(cell2)
+
+            select.name = "positions[]"
+            select.classList.add("ui", "fluid", "search", "dropdown", "selection", "multiple")
+            select.multiple = ""
+            var categories = <%- JSON.stringify(categories) %>
+            var option = document.createElement("option")
+            option.selected = "selected"
+            option.style = "display:none"
+            select.appendChild(option)
+            categories.forEach(category => {
+                var option = document.createElement("option")
+                option.textContent = category.name
+                option.value = category.name
+                select.appendChild(option)
+            });
+            cell3.appendChild(select)
+            row.appendChild(cell3)
+
+            button.classList.add("ui", "icon", "button")
+            button.onclick = function () { this.parentNode.parentNode.remove() }
+            button.innerHTML = "<i class=\"minus icon\"></i>"
+            button.type = "button"
+            cell4.appendChild(button)
+            row.appendChild(cell4)
+
+
+            document.getElementById("participantstable").getElementsByTagName("tbody")[0].appendChild(row)
+            $('.ui.dropdown')
+                .dropdown()
+        }
+    }
+    $("form").submit(function () {
+
+        var this_master = $(this);
+
+        this_master.find('input[type="checkbox"]').each(function () {
+            var checkbox_this = $(this);
+
+
+            if (checkbox_this.is(":checked") == true) {
+                checkbox_this.attr('value', '1');
+            } else {
+                checkbox_this.prop('checked', true);
+                //DONT' ITS JUST CHECK THE CHECKBOX TO SUBMIT FORM DATA    
+                checkbox_this.attr('value', '0');
+            }
+        })
+    })
+</script>

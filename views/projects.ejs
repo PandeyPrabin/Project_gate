@@ -1,0 +1,169 @@
+<!--////////////////////////////////////project search\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+<div class="ui secondary segment">
+    <div class="ui huge header"> List of projects
+        <% if(privilege != 'student'){ %>
+            <div class="content">
+                <form action="/createproject">
+                    <button class="ui blue label button">
+                        <i class="plus icon"></i> Create project </button>
+                </form>
+            </div>
+            <% } %>
+    </div>
+</div>
+<div class="ui stacked secondary blue segment">
+    <div class="ui center aligned container">
+        <div class="ui form">
+            <div class="three fields">
+
+                <!-- todo sort and order-->
+                <div class="field">
+                    <label>Search...</label>
+                    <input type="text" id="projects" onkeypress="refresh()" placeholder="Search for projects">
+                </div>
+
+                <!-- Not done yet-->
+                <div class="field">
+                    <label> Project status </label>
+                    <select class="ui fluid dropdown">
+                        <option value="All"> All </option>
+                        <option value="Incoming">Upcoming</option>
+                        <option value="Incoming">Ongoing</option>
+                        <option value="Incoming">Finished</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Order by</label>
+                    <select id="order" onchange="orderby()" class="ui fluid dropdown">
+                        <option value="asc">ASC ↑</option>
+                        <option value="desc"> DESC ↓ </option>
+                    </select>
+                </div>
+            </div>
+            <div class="ui checkbox">
+                <input type="checkbox" id="completed" onclick="refresh()">
+                <label>Include complete projects</label>
+            </div>
+            <div class="ui checkbox">
+                <input type="checkbox" id="open" onclick="refresh()">
+                <label>Show only projects with open positions</label>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<!--///////////////////////////////Projects list\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+<div class="ui  divider"></div>
+
+<div class="ui container">
+    <div class="ui secondary segment nopadding">
+        <div class="ui unstackable divided items allprojects">
+            <% data.forEach(function(row, i){ %>
+                <a href="/project/<%-row.id%>" class="item project project-list">
+
+                    <div class="ui left floated small image projectImage">
+                        <div class="ui small fluid blue label projectstatus"><%-row.status%></div>
+                        <img src="<% if(row.imagepath) { %><%-row.imagepath%><% } else { %>/Resources/square-image.png<% } %>" alt="Project image">
+                    </div>
+
+                    <div class="content">
+                        <div title="<%-row.name%>" class="ui header projectname listTruncate"><%-row.name%></div>
+
+                        <div class="description projectdescription descriptionTruncate " style="overflow-wrap: break-word;">
+                            <% var description = row.description.split("\n").join("<br />") %>
+                            <%-description%>
+                        </div>
+                    </div>
+                </a>
+            <% }) %>
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    function refresh() {
+        var input, filter, i, completed, open
+        input = document.getElementById('projects')
+        filter = input.value.toUpperCase()
+        div = document.getElementsByClassName("project")
+        completed = document.getElementById("completed").checked
+        open = document.getElementById("open").checked
+        var searches = filter.split(" ")
+        for (i = 0; i < div.length; i++) {
+            div[i].style.display = ""
+        }
+        // Loop through all list items, and hide those who don't match the search query
+        searches.forEach(element => {
+            for (i = 0; i < div.length; i++) {
+                projectname = div[i].getElementsByClassName("projectname")[0]
+                projectdescription = div[i].getElementsByClassName("projectdescription")[0]
+                projectstatus = div[i].getElementsByClassName("projectstatus")[0]
+                if (projectstatus.innerHTML.toUpperCase().indexOf("COMPLETED") > -1 && !completed) {
+                    div[i].style.display = "none"
+                }
+                if (!(projectstatus.innerHTML.toUpperCase().indexOf("OPEN POSITIONS") > -1) && open) {
+                    div[i].style.display = "none"
+                }
+                if ((projectdescription.innerHTML.toUpperCase().indexOf(element) > -1) || (projectname.innerHTML
+                        .toUpperCase().indexOf(element) > -1)) {} else {
+                    div[i].style.display = "none"
+                }
+            }
+        })
+    }
+
+    function orderby() {
+        if (document.getElementById("order").value == "asc") {
+            sorthtml(false)
+        } else {
+            sorthtml(true)
+        }
+    }
+
+    function sorthtml(reverse) {
+        var divs = document.getElementsByClassName("allprojects")[0].children
+        var content = []
+        for (var i = 0; i < divs.length; i++) {
+            content.push(divs[i].outerHTML)
+        }
+        var names = []
+        for (var i = 0; i < divs.length; i++) {
+            names.push(divs[i].children[0].children[1].innerHTML)
+        }
+        //1) combine the arrays:
+        var list = []
+        for (var j = 0; j < names.length; j++)
+            list.push({
+                'name': names[j],
+                'html': content[j]
+            });
+        //2) sort:
+        list.sort(function (a, b) {
+            return a.name.localeCompare(b.name, 'fi')
+        })
+        if (reverse) {
+            list.reverse()
+        }
+        //3) separate them back out:
+        for (var k = 0; k < list.length; k++) {
+            names[k] = list[k].name
+            content[k] = list[k].html
+        }
+        var replacedivs = document.getElementsByClassName("allprojects")[0].children
+        for (var i = 0; i < content.length; i++) {
+            replacedivs[i].outerHTML = content[i]
+        }
+    }
+    window.onload = function () {
+        sorthtml(false)
+        refresh()
+    }
+</script>

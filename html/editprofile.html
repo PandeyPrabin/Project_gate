@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="Semantic-UI-CSS-master/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="Resources/style.css">
+    <script src="Resources/jquery-3.3.1.min.js"></script>
+
+
+
+    <script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
+    <!--Needed for calendar popup-->
+
+    <script src="Semantic-UI-CSS-master/semantic.min.js"></script>
+
+
+    <title> Edit profile |Project Gate </title>
+    <script>
+        $(document).ready(function () {
+            $('.ui.form')
+                .form({
+                    fields: {
+                        FirstName: {
+                            identifier: 'firstName',
+                            rules: [{
+                                type: 'empty',
+                                prompt: 'Please enter your given name'
+                            }]
+                        },
+                        lastName: {
+                            identifier: 'lastName',
+                            rules: [{
+                                type: 'empty',
+                                prompt: 'Please enter your surname'
+                            }]
+                        },
+
+                        phone: {
+                            identifier: 'phone',
+                            rules: [{
+                                type: 'empty',
+                                prompt: 'Please enter your phone number!'
+                            }, {
+                                type: 'integer',
+                                prompt: 'Please use only numbers (phone number)'
+                            }, {
+                                type: 'minLength[10]',
+                                prompt: 'Please enter a valid phone number'
+                            }]
+                        },
+
+                        yearOfStudy: {
+                            identifier: 'yearOfStudy',
+                            rules: [{
+                                    type: 'empty',
+                                    prompt: 'Please enter your study year.'
+                                },
+                                {
+                                    type: 'integer[1..10]',
+                                    prompt: 'Choose  {identifier} between {ruleValue}'
+                                }
+                            ]
+                        },
+
+                        degree: {
+                            identifier: 'degree',
+                            rules: [{
+                                type: 'empty',
+                                prompt: 'Enter your Degree!'
+                            }]
+                        },
+
+                        terms: {
+                            identifier: 'terms',
+                            rules: [{
+                                type: 'checked',
+                                prompt: 'You must agree to the terms and conditions'
+                            }]
+                        }
+
+                    }
+                });
+        });
+    </script>
+
+</head>
+
+<body style="background-image: url(Resources/banner.jpg); background-attachment: fixed;">
+
+    <!--/////////////////////////////////////////Navigation menu\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+    <div id="desktopMenu" class="ui fixed borderless menu ">
+        <a href="index.html" class="item">
+            <i class="home icon"></i>
+        </a>
+        <a href="projects.html" class="item"> Projects </a>
+        <a href="students.html" class="item"> Students </a>
+        <a href="about.html" class="item"> About Us </a>
+
+        <div class="ui right menu">
+            <div class="ui compact menu">
+
+                <div class="item" title="my profile">
+                    <a href="profile.html">
+                        <i class="large user circle icon"></i>
+                    </a>
+                </div>
+
+                <div class="item" title="Logout">
+                    <a href="login.html">
+                        <i class="large sign out alternate icon"></i>
+                    </a>
+                </div>
+
+
+                <div class="ui simple dropdown item">
+                    <i class="cog icon"></i>
+                    <div class="menu">
+                        <a href="usermanagement.html" class="item">
+                            Manage users </a>
+
+                        <a href="tagmanagement.html" class="item">
+                            Manage tags</a>
+
+                        <a href="myprojects.html" class="item">
+                            My projects</a>
+
+                        <a href="settings.html" class="item">
+                            Settings</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- /////////////////////////////////////Mobile menu\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+    <div id="mobileMenu" class="ui fixed menu">
+        <div class="ui simple dropdown item">
+            <i class="bars icon"></i>
+            <div class="menu">
+                <div class="item">
+                    <a href="projects.html">Projects</a>
+                </div>
+                <div class="item">
+                    <a href="students.html"> students</a>
+                </div>
+                <div class="item">
+                    <a href="about.html"> about</a>
+                </div>
+            </div>´
+
+        </div>
+        <a href="index.html" class="ui centered blue header"> Project Gate </a>
+
+        <div class="ui right menu">
+            <div class="ui simple dropdown item">
+                <i class="cog icon"></i>
+                <div class="menu">
+                    <div class="item">
+                        <a href="profile.html">Profile</a>
+                    </div>
+                    <div class="item">
+                        <a href="usermanagement.html">Manage users</a>
+                    </div>
+                    <div class="item">
+                        <a href="tagmanagement.html">Manage tags</a>
+                    </div>
+                    <div class="item">
+                        <a href="myprojects.html">My projects</a>
+                    </div>
+                    <div class="item">
+                        <a href="settings.html">Settings</a>
+                    </div>
+                    <div class="item">
+                        <a href="login.html">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <a href="login.html" title="Logout" class="logout">
+                <i class="large sign out alternate icon"></i>
+            </a>
+        </div>
+    </div>
+    <!--//////////////////////////////////Page content starts\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+    <div id="wrapper">
+        <h1 class="ui header"> Edit Profile</h1>
+
+    </div>
+    <div class="ui hidden divider"></div>
+
+    <div class="ui container">
+        <div class="ui secondary segment">
+            <form class="ui form">
+                <div class="ui error message">
+                    <div class="ui header">
+                        There were some erros with your submission:
+                    </div>
+                </div>
+                <h4 class="ui dividing header">Personal Information</h4>
+                <div class="three fields">
+
+                    <div class="field">
+                        <label>Upload picture </label>
+                        <label for="profilePic" class="ui small picture">
+                            <img class="ui small image" src="Resources/placeholder.png" alt="Profile placeholder" onmouseover="" style="cursor: pointer">
+                        </label>
+                        <input type="file" accept="image/*" id="profilePic" style="display:none">
+                    </div>
+
+                    <div class="field">
+                        <label>First name</label>
+                        <input type="text" name="firstName" placeholder="First Name">
+                    </div>
+                    <div class="field">
+                        <label>Last name</label>
+                        <input type="text" name="lastName" placeholder="Last Name">
+                    </div>
+
+
+                </div>
+                <div class="two fields">
+                    <div class="field">
+                        <label>Gender</label>
+                        <select name="gender" class="label ui search selection fluid dropdown">
+                            <option value=""> Select gender </option>
+                            <option value="M"> Male</option>
+                            <option value="F"> Female </option>
+                            <option value="O"> Other </option>
+
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>Phone number</label>
+
+                        <div class="ui labeled input">
+                            <div class="ui label">
+                                +358
+                            </div>
+                            <input type="text" name="phone" placeholder="0501234567">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="two fields">
+                    <div class="field">
+                        <label>Degree</label>
+                        <input type="text" Name="degree" placeholder="Degree">
+
+                    </div>
+                    <div class="field">
+                        <label>Year of study</label>
+                        <input type="number" Name="yearOfStudy" placeholder="Year of study">
+                    </div>
+
+                </div>
+
+                <div class=" field">
+                    <h4 class="ui dividing header">Biography</h4>
+                    <textarea placeholder="Write here about yourself..."></textarea>
+                </div>
+                <div>
+                    <label for="CV" class="ui icon button">
+                        <i class="file icon"></i>
+                        Upload CV
+                    </label>
+                    <input type="file" accept="application/pdf" id="CV" style="display:none">
+                </div>
+                <h4 class="ui dividing header"> Project interests</h4>
+
+                <div class="two fields">
+                    <div class="field">
+                        <label>Positions of interest </label>
+                        <select name="positions" multiple="" class="label ui search selection fluid dropdown">
+                            <option value="">No position of interest chosen</option>
+                            <option value="web design"> Web design </option>
+                            <option value="what"> whatever </option>
+                            <option value="nope">nope</option>
+                            <option value="test"> test </option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Skill development wishes</label>
+                        <select name="skills" multiple="" class="label ui search selection fluid dropdown">
+                            <option value=""> No skills chosen </option>
+                            <option value="Java"> Java</option>
+                            <option value="PHP"> PHP </option>
+                            <option value="C#"> C# </option>
+                            <option value="SQL"> SQL </option>
+                        </select>
+                    </div>
+                </div>
+
+                <script>
+                    // multiple choice dropdown 
+                    $('.label.ui.dropdown')
+                        .dropdown();
+                </script>
+
+                <h4 class="ui dividing header"> Skills </h4>
+
+                <div class="column">
+                    <div class="ui small blue label">PHP</div>
+                    <div class="ui star rating"></div>
+                    <button title="Remove" class="ui icon button">
+                        <i class="trash icon"></i>
+                    </button>
+
+
+                </div>
+
+                <div class="column">
+                    <div class="ui small purple label">Photoshop</div>
+                    <div class="ui star rating"></div>
+                    <button title="Remove" class="ui icon button">
+                        <i class="trash icon"></i>
+                    </button>
+
+                </div>
+
+                <div class="ui icon button">
+                    <i class="plus icon"></i>
+                </div>
+
+
+
+
+                <script>
+                    // Skills star rating
+                    $('.ui.rating')
+                        .rating({
+                            initialRating: 1,
+                            maxRating: 5
+                        })
+                </script>
+
+
+                <div class="ui section divider"></div>
+
+
+                <div class="ui blue submit button">Save changes</div>
+            </form>
+
+            <script>
+                // for closing error message
+                $('.message .close')
+                    .on('click', function () {
+                        $(this)
+                            .closest('.message')
+                            .transition('fade');
+                    });
+            </script>
+
+            <div class="ui hidden  divider"></div>
+
+
+        </div>
+
+        <!--Wrapper ends-->
+
+    </div>
+
+    <!--/////////////////////////////////////Page footer\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+    <div class="ui black inverted vertical footer segment">
+
+        <div class="ui center aligned container">
+            <div class="ui stackable inverted grid">
+                <div class="three wide column">
+                    <h4 class="ui inverted header">Community</h4>
+                    <div class="ui inverted link list">
+                        <a class="item" href="#">Lorem ipsum</a>
+                    </div>
+                </div>
+
+                <div class="three wide column">
+                    <h4 class="ui inverted header">Partners</h4>
+                    <div class="ui inverted link list">
+                        <a class="item" href="#">Link 1</a>
+                    </div>
+                </div>
+
+                <div class="seven wide right floated column">
+                    <h4 class="ui inverted teal header">Some motivative text</h4>
+                    <p> You could be the next potato. Do stuff and win.</p>
+                    <form action="register.html" target="_top">
+                        <button type="submit" class="ui large teal button">Join Today</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="ui inverted section divider"></div>
+            <img src="Resources/firma.png" alt="theFIRMA logo" class="ui centered  image">
+            <div class="ui horizontal inverted small divided link list">
+                <a class="item" href="http://thefirma.fi" target="_blank">theFIRMA ist nicht hier!</a>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

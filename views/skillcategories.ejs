@@ -1,0 +1,61 @@
+<div id="skills">
+
+    <div class="ui secondary segment">
+        <h2 class="ui dividing header"> Skill categories </h2>
+        <% data.forEach(function(row, i){ %>
+            <button type="button" class="ui label" style=" overflow: hidden; cursor: no-drop; background:<%-row.color%> ;" onmouseover="this.style.opacity='0.4';"
+                onmouseout="this.style.opacity='1';" onclick="deleteskill('<%-row.id%>')">
+                <span class="inv"> <%-row.name%> </span>
+            </button>
+        <% }); %>
+    </div>
+    <div class="ui container">
+        <div class="ui secondary segment">
+            <br>
+            <div class="two wide column">
+                <form id="skillcategoryform" class="ui form" action="/skillcategories" method="post">
+                    <h3>Add a new category:</h3>
+                    <div class="two fields">
+                        <div class="field">
+                            <label>Name
+                                <i class="help icon" data-position="right center" data-content="Name must contain between 3 and 30 characters"></i>
+                            </label>
+                            <input type="text" name="name" minlength="3" maxlength="30">
+                        </div>
+                        <div class="field">
+                            <label>Color</label>
+                            <noscript>
+                                <a href="https://www.google.com/search?q=color+picker" class="link" target="_BLANK">
+                                    <i class="help icon"></i>
+                                </a>
+                            </noscript>
+                            <!-- <input type="text" name="color" placeholder="#ffffff or rgb(255,255,255)"> -->
+                            <input type='color' name='color' value='#3355cc' />
+                            <!-- Uses browsers own color picker if available, otherwise reverts to Spectrum -->
+                        </div>
+                    </div>
+                    <input type="submit" value="Submit" class="ui cancel submit button">
+                    <div class="ui error message"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Spectrum: Color picker for older browsers -->
+    <script src="/spectrum.min.js"></script>
+    <script>
+        //Activates the help popup
+        $('.help')
+            .popup({
+                inline: true
+            });
+    </script>
+
+    <script>
+        function deleteskill(id) {
+            if (window.confirm("Are you sure you want to delete this category?")) {
+                window.location.href = '/skillcategories/delete/' + id
+            }
+        }
+    </script>
+</div>

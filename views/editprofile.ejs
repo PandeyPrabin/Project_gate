@@ -1,0 +1,396 @@
+<div class="ui secondary segment">
+    <h1 class="ui header"> Edit Profile</h1>
+</div>
+
+<div class="ui hidden divider"></div>
+<div class="ui container">
+    <div class="ui secondary segment">
+    <form action="?" id="editprofileform" class="ui form" method="post"  enctype="multipart/form-data">
+        <h4 class="ui dividing header">Personal Information</h4>
+        <div class="three fields">
+
+            <div class="field">
+                <label>Upload picture
+                        <i class="help icon" data-position="bottom center" data-title="Profile picture (max 420kB)" data-content="Supported formats: jpg, jpeg, png"></i>
+                </label>
+                <label for="profilePic" class="ui small picture">
+                    <img class="ui small image" src="<% if(data.imagepath) { %><%-data.imagepath%><% } else { %>/Resources/placeholder.png<% } %>" alt="Profile placeholder" onmouseover="" style="cursor: pointer">
+                </label>
+                <input type="file" name="image" accept=".jpg, .png, .jpeg" id="profilePic" style="display:none">
+            </div>
+            <div class="field">
+                <label>First name</label>
+                <input type="text" name="firstname" value="<%-data.firstname%>" maxlength="40">
+            </div>
+            <div class="field">
+                <label>Last name</label>
+                <input type="text" name="lastname" value="<%-data.lastname%>" maxlength="40">
+            </div> 
+
+            <div class="field">
+                <label>Birthdate</label>
+                <div class="ui calendar" id="birthday">
+                    <div class="ui input left icon">
+                        <i class="calendar icon"></i>
+                        <input type="text" name="birthdate" value="<%-birthdate%>" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="three fields">
+                <div class="field">
+                    <label>Gender</label>
+                    <select name="gender" id="gender" class="ui dropdown" required>
+                        <option value="">Your gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="phonenum">Phone number:</label>
+                    <div class="ui labeled input">
+                        <div class="ui label">
+                            +358
+                        </div>
+                    <input type="number" name="phonenum" value="<%-data.phonenum%>">
+                    </div>
+                </div>
+            </div>
+            <div class="two fields">
+                <div class="field">
+                    <label for="degree">Degree</label>
+                    <input type="text" name="degree" value="<%-data.degree%>" maxlength="75">
+                </div>
+                <div class="two fields">
+                <div class="field">
+                    <label for="studygroup">Study Group</label>
+                    <input type="text" name="studygroup" value="<%-data.studygroup%>" maxlength="11">
+                </div>
+            </div>
+        </div>
+
+            <!-- 
+        <h4 class="ui dividing header"> Address</h4>
+        <div class="three fields">
+            <div class="field">
+                <label>Address</label>
+                <input type="text" name="address" value="<%-data.address%>">
+            </div>
+            <div class="field">
+                <label>City</label>
+                <input type="text" name="city" value="<%-data.city%>">
+            </div>
+            <div class="field">
+                <label>Postal Code</label>
+                <input type="text" name="postalcode" value="<%-data.postalcode%>">
+            </div>
+        </div>
+
+    -->
+
+        <h4 class="ui dividing header"> About me </h4>
+
+        <div class=" field">
+                <label>Biography
+                    <i class="help icon" data-position="top center" data-title="What to write?" data-content="Write here about yourself in 5000 characters or less."></i>
+
+                </label>
+                <textarea name="bio" maxlength="10000"><%-data.bio%></textarea>
+            </div>
+            <div>
+                <label for="CV" class="ui icon button">
+                <i class="file icon"></i>
+                Upload CV
+                </label>
+                <i class="help icon" data-position="top center" data-title="CV Upload" data-content="Accepted file format: PDF"></i>
+                <input type="file" accept="application/pdf" id="CV" style="display:none">
+            </div>
+                <h4 class="ui dividing header"> Skills and interests </h4>
+                <div class="field">
+                    <label> Skills 
+                        <i class="help icon" data-position="top center" data-content="Nothing to see here!"> </i>
+                    </label>
+                    <div>
+                    <table  id="skilltable" cellspacing="10">
+                        <tr>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Rating</th>
+                            <th>Delete</th>                                
+                        </tr>
+                        <% data.skills.forEach(function(skill, i){ %>
+                            <tr>
+                                <% if(skill.category){ %>
+                                <td>
+                                    <input type="text" name="skillsname[]" value="<%-skill.name%>"  maxlength="40">
+                                </td>
+                                <td>
+                                    <select class="ui fluid search dropdown" name="skillscategory[]">
+                                        <% categories.forEach(function(category, j ){ %>
+                                            <% if (category.name === skill.category.name){ %>
+                                            <option selected><%-category.name%></option>
+                                            <%  }else{ %>
+                                            <option><%-category.name%></option>
+                                            <%  } %>
+                                    <%  }) %>
+                                    </select>
+                                </td>
+                                <td>
+                                    <div class="ui star rating"></div>
+                                </td>
+                                <td>
+                                        <button class="ui icon button"type="button" class="delete" onclick="removerow(this)"><i class="minus icon"></i></button>
+                                </td>
+                                <% } else { %>
+                                    <td>
+                                        <button type="button" class="delete" onclick="removerow(this)">x</button>
+                                    </td>  
+                                    <td>
+                                        <input type="text" name="skillsname[]" value="" maxlength="40">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="skillscategory[]" value="">
+                                    </td>
+                                <% } %>
+                            </tr>
+                            <% }) %>
+                            <tr>
+                            <button class="plus icon" valign="bottom" type="button" id="createnewskill"><i class="plus icon"></i></button>
+                        </tr>
+                        </table>
+                    </div>
+                    </div>
+
+                    <div class="field">
+                        <label>I want to learn...
+                            <i class="help icon" data-position="top center" data-content="Nothing to see here!"> </i>
+                        </label>
+                    <table id="skilldevtable" cellspacing="10">
+                        <tr>
+                            <th>Name</th>
+                            <th style="max-width: 40%">Category</th>
+                            <th>Delete</th>                                
+                        </tr>
+                        <% data.skilldev.forEach(function(skill, i){ %>
+                            <tr>
+                                <% if(skill.category){ %>
+                                <td>
+                                    <input type="text" name="skilldevname[]" value="<%-skill.name%>" maxlength="40">
+                                </td>
+                                <td>
+                                    <select class="ui fluid search dropdown" name="skilldevcategory[]">
+                                        <% categories.forEach(function(category, j ){ %>
+                                            <% if (category.name === skill.category.name){ %>
+                                            <option selected><%-category.name%></option>
+                                            <%  }else{ %>
+                                            <option><%-category.name%></option>
+                                            <%  } %>
+                                    <%  }) %>
+                                    </select>
+                                </td>
+                                <td>
+                                        <button class="ui icon button"type="button" class="delete" onclick="removerow(this)"><i class="minus icon"></i></button>
+                                </td>
+                                <% } else { %>
+                                    <td>
+                                        <button type="button" class="delete" onclick="removerow(this)">x</button>
+                                    </td>  
+                                    <td>
+                                        <input type="text" name="skilldevname[]" value="" maxlength="40">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="skilldevcategory[]" value="" maxlength="40">
+                                    </td>
+                                <% } %>
+                            </tr>
+                            <% }) %>
+                            <tr>
+                            <button class="plus icon" valign="bottom" type="button" id="createnewskilldev"><i class="plus icon"></i></button>
+                        </tr>
+                        </table>
+                    </div>
+
+                    <div class="field">
+                            <label>Positions of interest</label>
+                                <select class="ui fluid search dropdown" name="wishes[]" multiple="">
+                                        <% categories.forEach(function(category){ var selected = 0%>
+                                            <% data.wishes.forEach(function(wish){ %>
+                                                <% if (category.id == wish.category.id){ %>
+                                                    <option selected value="<%-category.name%>"><%-category.name%></option>
+                                                    <% selected = 1 %>
+                                            <% }})%>
+                                            <% if (selected == 0){ %>
+                                                <option><%-category.name%></option>
+                                            <%  } %>
+                                        <%  }) %>
+                                    </select>
+                        </div>
+                    <% if(privilege == 'admin'){ %>
+                    <h5 class="ui header">Admin</h5>
+                    <div class="three fields">
+                        <div class="field">
+                            <label>Privilege</label>
+                            <select name="privilege" id="privilege" class="ui dropdown" required>
+                                <option value="student">Student</option>
+                                <option value="projectmanager">Project manager</option>
+                                <option value="admin">Admin</option>
+                              </select>
+                        </div>
+                    </div>
+                    <% } %>
+            <input type="hidden" id="data" name="data" value="">
+            <input type="hidden" id="ratings" name="ratings" value="">
+    <div class="ui divider"></div>
+        <button class="ui skilltablesubmit submit button">Save changes</button>
+        <div class="ui error message"></div>
+    </form>
+</div>
+
+</div>
+<div class="ui hidden section divider"></div>
+
+<script>
+$('.help')
+  .popup({
+    inline: true
+  })
+;
+</script>
+
+<script>
+    jQuery(document).ready(function($) {
+        var gender = <%- JSON.stringify(data.gender) %>
+        $("#gender").val(gender)
+        var privilege = <%- JSON.stringify(data.privilege) %>
+        $("#privilege").val(privilege)
+        
+        setratings()
+        $('#birthday').calendar({
+        type: 'date',
+        startMode: 'year'
+        })
+        $('.ui.dropdown')
+            .dropdown({
+                maxSelections: 6
+            })
+        $('.ui.dropdown').on('click', function () {
+            colors()
+        })
+        colors()
+    })
+    document.getElementById("editprofileform").onsubmit = function () {
+        document.getElementById("ratings").value = $('.rating').rating('get rating')
+    }
+    
+    function setratings() {
+        var skills = <%- JSON.stringify(data.skills)%>
+        var i = 0
+        $('.ui.rating').each(function() {
+            $(this).rating('set rating', skills[i].rating)       
+            i++
+        })
+    }
+    function colors() {
+        var tags = document.getElementsByClassName("ui label")
+        var categories = <%- JSON.stringify(categories) %>
+            Array.from(tags).forEach(function (tag) {
+                category = ''
+                category = categories.find(o => o.name == tag.getAttribute('data-value'))
+                if (category) {
+                    tag.style = "background:" + category.color
+                }
+            })
+    }
+    function removerow(a) {
+        a.parentNode.parentNode.remove()
+    }
+    // NEW SKILL BUTTON
+    window.onload = function () { // todo so you can also remove these rows
+        $(".rating").rating({maxRating: 5})
+        colors()
+        setratings()
+        document.getElementById("createnewskill").onclick = function () {
+            var row = document.createElement("tr"),
+                cell = document.createElement("td"),
+                cell2 = document.createElement("td"),
+                cell3 = document.createElement("td"),
+                button = document.createElement("button"),
+                field = document.createElement("input"),
+                select = document.createElement("select"),
+                div = document.createElement("div")
+
+            field.name = "skillsname[]"
+            field.type = "text"
+            cell.appendChild(field)
+            row.appendChild(cell)
+
+            select.name = "skillscategory[]"
+            var categories = <%- JSON.stringify(categories) %>
+                categories.forEach(category => {
+                    var option = document.createElement("option")
+                    option.textContent = category.name
+                    option.value = category.name
+                    select.appendChild(option)
+                })
+            select.classList.add('ui', 'fluid', 'search', 'dropdown')
+            cell2.appendChild(select)
+            row.appendChild(cell2)
+
+            div.classList.add("ui", "star", "rating")
+            row.appendChild(div)
+
+            button.classList.add("ui", "icon", "button")
+            button.onclick = function () { this.parentNode.parentNode.remove() }
+            button.innerHTML = "<i class=\"minus icon\"></i>"
+            button.type = "button"
+            cell3.appendChild(button)
+            row.appendChild(cell3)
+
+            document.getElementById("skilltable").getElementsByTagName("tbody")[0].appendChild(row)
+            $(".rating").rating({maxRating: 5})
+            $('.ui.dropdown')
+            .dropdown()
+            setratings()
+        }
+        // NEW SKILL DEVELOPEMENT WISH BUTTON
+        document.getElementById("createnewskilldev").onclick = function () {
+            var row = document.createElement("tr"),
+                cell = document.createElement("td"),
+                cell2 = document.createElement("td"),
+                cell3 = document.createElement("td"),
+                button = document.createElement("button"),
+                field = document.createElement("input"),
+                select = document.createElement("select"),
+                div = document.createElement("div")
+
+            field.name = "skilldevname[]"
+            field.type = "text"
+            cell.appendChild(field)
+            row.appendChild(cell)
+
+            select.name = "skilldevcategory[]"
+            var categories = <%- JSON.stringify(categories) %>
+                categories.forEach(category => {
+                    var option = document.createElement("option")
+                    option.textContent = category.name
+                    option.value = category.name
+                    select.appendChild(option)
+                })
+            select.classList.add('ui', 'fluid', 'search', 'dropdown')
+            cell2.appendChild(select)
+            row.appendChild(cell2)
+
+            button.classList.add("ui", "icon", "button")
+            button.onclick = function () { this.parentNode.parentNode.remove() }
+            button.innerHTML = "<i class=\"minus icon\"></i>"
+            button.type = "button"
+            cell3.appendChild(button)
+            row.appendChild(cell3)
+
+            document.getElementById("skilldevtable").getElementsByTagName("tbody")[0].appendChild(row)
+            $('.ui.dropdown')
+            .dropdown()
+        }
+    }
+</script>

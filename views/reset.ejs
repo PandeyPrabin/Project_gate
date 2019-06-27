@@ -1,0 +1,41 @@
+<div class="ui centered grid container">
+
+    <div class="column">
+
+        <h2 class="ui center aligned icon header">
+            <i class="circular users icon"></i> Password Recovery </h2>
+        <h1 class="ui header"> Password recovery</h1>
+
+        <div class="ui  divider"></div>
+
+        <div class="ui blue icon message">
+            <i class="question icon"></i>
+            <div class="content">
+                <div class="header">
+                    To reset your password
+                </div>
+                <p>enter new password.
+            </div>
+        </div>
+
+        <form action="/reset/<%-tokenid%>" method="post" class="ui large form">
+            <div class="ui stacked secondary segment">
+                <div class="field">
+                    <label> Password </label>
+                    <input type="password" name="password" placeholder="Password..">
+                </div>
+                <div class="field">
+                    <label> Password Confirmation </label>
+                    <input type="password" name="password-again" placeholder="Password confirmation..">
+                </div>
+
+                <button class="ui fluid blue button" type="submit">Set Password</button>
+            </div>
+            <div class="ui message">
+
+                <a href="/">Back to login</a>
+            </div>
+
+        </form>
+    </div>
+</div>

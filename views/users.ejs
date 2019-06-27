@@ -1,0 +1,62 @@
+<!--////////////////////////////////////////////Students\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+<div class="ui secondary segment">
+    <h2 class="ui header"> User Management</h2>
+</div>
+
+<table id="usertable" class="ui compact selectable  blue sortable celled fixed table" style="width: 100%">
+    <thead>
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th style="width: 110px;">Usergroup</th>
+            <th style="width: 50px;" >Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% data.forEach(function(row, i){ %>
+        <tr>
+            <td class="selectable" title="<%-row.firstname%>"> 
+                  <a href="/profile/<%-row.id%>" target="_BLANK"> <div class="tableTruncate"> <%-row.firstname%> </div> </a> 
+            </td>
+
+            <td title="<%-row.lastname%>"><div class="tableTruncate"> <%-row.lastname%> </div></td>
+            <td title="<%-row.email%>"> <a href="mailto:<%-row.email%>?Subject=" target="_top" class="tableTruncate"> <%-row.email%> </a> </td>
+            <td title="<%-row.privilege%>"> <div class="tableTruncate"> <%-row.privilege%> </div> </td>
+            <td>
+                <a href="/profile/edit/<%-row.id%>">
+                    <i class="pencil alternate icon" title="Edit user"></i>
+                </a>
+                <a onclick="deleteuser('<%-row.id%>')">
+                    <i class="trash alternate icon" title="Delete user"></i>
+                </a>
+            </td>
+        </tr>
+        <% }) %>
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th>Usergroup</th>
+            <th>Actions</th>
+        </tr>
+    </tfoot>
+</table>
+
+<script>
+    $(document).ready(function() {
+        $('#usertable').DataTable();
+    } );
+</script>
+
+<script>
+    function deleteuser(id) {
+        if (window.confirm("Are you sure you want to delete this user?")) {
+            window.location.href = '/deleteuser/'+id
+        }
+    }
+</script>

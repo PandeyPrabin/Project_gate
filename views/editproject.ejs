@@ -1,0 +1,271 @@
+<div class="ui secondary segment">
+<div class="ui huge header"><%-pagetitle%>
+    <% if(pagetitle == "Edit Project") { %>
+    <button class="ui blue button label" onclick="deleteproject('<%-data.id%>')"><i class="trash icon"></i> DELETE PROJECT</button>
+    <% } %>
+</div>
+</div>
+
+<div class="ui hidden divider"></div>
+
+<div class="ui container">
+    <div class="ui secondary segment">
+<form  id="editprojectform" class="ui form" method="post" action="/createproject/<%-data.id%>" enctype="multipart/form-data">
+
+    <div class="two fields">
+
+        <div class="required field">
+            <label>Project name</label>
+            <input type="text" name="name" maxlength="75" value="<%-data.name%>" >
+        </div>
+        <div class="required field">
+            <label>Project Manager</label>
+            <input type="text" name="manager" value="<%- (data.manager) ? data.manager.email : ''%>" required>
+        </div>
+
+    </div>
+    <div class="two fields">
+        <div class="field">
+            <label>Status</label>
+            <select class="ui fluid dropdown" name="status" id="status" required>
+
+                <option value="Incoming"> Incoming</option>
+                <option value="Ongoing">Ongoing</option>
+                <option value="Open Positions">Open Positions</option>
+                <option value="Completed">Completed</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label>Deadline</label>
+                <div class="ui left icon input" id="deadline">
+                    <i class="calendar icon"></i>
+                    <input type="text" name="deadline" value="<%-data.deadlinee%>">
+                </div>
+
+            <br/>
+        </div>
+    </div>
+    <div class="two fields">
+        <div class="field">
+            <h5 class="ui header">Required Skills</h5>
+            <table id="skilltable">
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Positions</th>
+                </tr>
+                <% if (data.skills) { %>
+                <% data.skills.forEach(function(skill, i){ %>
+                        <tr>
+                            <% if(skill){ %>
+                                <td>
+                                        <button type="button" class="ui button label delete" onclick="removerow(this)"><i class="minus icon" </button>
+                                </td>
+                            <td>
+                                <input type="text" name="skillsname[]" value="<%-skill.name%>" maxlength="50">
+                            </td>
+                            <td>
+                                    <select name="skillscategory[]">
+                                        <% categories.forEach(function(category, j ){ %>
+                                            <% if (category.name === skill.category.name){ %>
+                                            <option selected><%-category.name%></option>
+                                            <%  }else{ %>
+                                            <option><%-category.name%></option>
+                                            <%  } %>
+                                    <%  }) %>
+                                    </select>
+                            </td>
+                            <% } else { %>
+                                <td>
+                                    <input type="text" name="skillsname[]" value="" maxlength="50">
+                                </td>
+                                <td>
+                                    <input type="text" name="skillscategory[]" value="">
+                                </td>
+                            <% } %>
+
+                            <td> 
+                                    <select class="ui fluid dropdown" name="todo" id="todo">
+                                            <option value="1"> 1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                        </select>
+                            </td>
+                        </tr>
+                        <% })} %>
+
+                        <button class="ui button label" type="button" id="createnewskill"><i class="plus icon"></i> </button>
+                    </table>
+                </div>
+                <div class="field">
+                    <h5 class="ui header">Open positions</h5>
+                    <select class="ui fluid search dropdown" name="positions[]" multiple="">
+                        <% categories.forEach(function(category){ var selected = 0%>
+                            <% if (data.openpositions) { %>
+                            <% data.openpositions.forEach(function(pos){ %>
+                                <% if (category.id == pos.position){ %>
+                                    <option selected value="<%-category.name%>"><%-category.name%></option>
+                                    <% selected = 1 %>
+                            <% }})%>
+                            <% if (selected == 0){ %>
+                                <option><%-category.name%></option>
+                            <%  } %>
+                        <%  }}) %>
+                    </select>
+                </div>
+            </div>
+
+            <div class="ui stackable grid">
+                    
+                <div class="four wide column">
+
+                    <i class="help icon" data-position="top center" data-title="Project Image" data-content="Max XXXkb. Accepts all image formats"></i>
+                    Project image
+                    <label for="projectpic" class="ui small picture"> 
+                        <img src="/Resources/square-image.png" class="ui left floated small image" alt="Project image" onmouseover="" style="cursor: pointer">
+                    </label>
+                    <input type="file" accept="image/*" id="projectPicture" style="display:none">
+
+                </div>
+
+                <div class="twelve wide column">
+
+                    <div class="required field">
+
+                        <label>Project description </label>
+                        <textarea name="description" maxlength="10000" ><%-data.description%></textarea>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+    <div class="field">
+        <input type="file" name="image" accept="image/*" id="projectpic" style="display:none">
+    </div>
+
+    <div class="ui form">
+        <div class="four fields">
+    
+            <div class="field">
+                <label>Start date</label>
+                
+                    <div class="ui left icon input" id="rangestart">
+                        <i class="calendar icon"></i>
+                        <input type="text" name="startdate" value="<%-data.startdatee%>">
+                    </div>
+
+            </div>
+            <div class="field">
+                <label>End date</label>
+                    <div class="ui input left icon" id="rangeend">
+                        <i class="calendar icon"></i>
+                        <input type="text" name="enddate"  value="<%-data.enddatee%>">
+                    </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="ui hidden divider"></div>
+
+    <button class="ui primary button" type="submit"> APPLY </button>
+    <div class="ui error message"></div>
+</form>
+
+<div class="ui hidden divider"></div>
+</div>
+</div>
+
+<script>
+        $('.help')
+          .popup({
+            inline: false
+          })
+        ;
+</script>
+
+<script>
+    function removerow(a) {
+        a.parentNode.parentNode.remove()
+    };
+    $('.ui.dropdown')
+        .dropdown({
+            maxSelections: 5
+        });
+    $('.ui.dropdown').on('click', function () {
+        colors();
+    });
+    function colors() {
+        var tags = document.getElementsByClassName("ui label");
+        var categories = <%- JSON.stringify(categories) %>;
+            Array.from(tags).forEach(function (tag) {
+                category = '';
+                category = categories.find(function(o) { return o.name == tag.getAttribute('data-value') } );
+                if (category) {
+                    tag.style = "background:" + category.color;
+                }
+            });
+    }
+    window.onload = function () { // todo so you can also remove these rows
+        colors();
+        document.getElementById("createnewskill").onclick = function () {
+            var row = document.createElement("tr"),
+                cell = document.createElement("td"),
+                cell2 = document.createElement("td"),
+                cell3 = document.createElement("td"),
+                button = document.createElement("button"),
+                field = document.createElement("input"),
+                select = document.createElement("select");
+            button.classList.add("delete");
+            button.onclick = function () { this.parentNode.parentNode.remove() }
+            button.innerHTML = "<i class='minus icon'> </i>";
+            button.type = "button";
+            cell3.appendChild(button);
+            row.appendChild(cell3);
+
+            field.name = "skillsname[]";
+            field.type = "text";
+            cell.appendChild(field);
+            row.appendChild(cell);
+
+            select.name = "skillscategory[]";
+            var categories = <%- JSON.stringify(categories) %>;
+                categories.forEach(function(category) {
+                    var option = document.createElement("option");
+                    option.textContent = category.name;
+                    option.value = category.name;
+                    select.appendChild(option);
+                });
+            cell2.appendChild(select);
+            row.appendChild(cell2);
+            document.getElementById("skilltable").getElementsByTagName("tbody")[0].appendChild(row);
+        }
+        var status = <%- JSON.stringify(data.status) %>
+        $('#status').dropdown('set selected', status);
+    }
+        //calendar popup
+        $('#deadline').calendar({
+            type: 'date'
+        });
+        $('#rangestart').calendar({
+            type: 'date',
+            endCalendar: $('#rangeend')
+        });
+        $('#rangeend').calendar({
+            type: 'date',
+            startCalendar: $('#rangestart')
+        });
+        function deleteproject(id) {
+            if (window.confirm("Are you sure you want to delete this project?")) {
+                window.location.href = '/project/delete/' + id;
+
+                }
+            }
+
+</script>

@@ -1,0 +1,299 @@
+/* Used on register form password - Not really needed, just for fun/testing :  */
+
+meter {
+    /* Reset the default appearance */
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0 auto 1em;
+    width: 100%;
+    height: 0.5em;
+    /* Applicable only to Firefox */
+    background: none;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+meter::-webkit-meter-bar {
+    background: none;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Webkit based browsers */
+
+meter[value="1"]::-webkit-meter-optimum-value {
+    background: red;
+}
+
+meter[value="2"]::-webkit-meter-optimum-value {
+    background: orange;
+}
+
+meter[value="3"]::-webkit-meter-optimum-value {
+    background: yellow;
+}
+
+meter[value="4"]::-webkit-meter-optimum-value {
+    background: green;
+}
+
+/* Gecko based browsers */
+
+meter[value="1"]::-moz-meter-bar {
+    background: red;
+}
+
+meter[value="2"]::-moz-meter-bar {
+    background: orange;
+}
+
+meter[value="3"]::-moz-meter-bar {
+    background: yellow;
+}
+
+meter[value="4"]::-moz-meter-bar {
+    background: green;
+}
+
+/* LARGE ELEMENTS */
+
+body {
+    margin-top: 40px;
+}
+
+/*Limits the text height*/
+
+.labeltwoLines {
+    position: relative;
+    max-height: 2.9em;
+    /*  three lines */
+}
+
+.threeLines {
+    position: relative;
+    height: 3.6em;
+    /*  three lines */
+}
+
+textarea {
+    /* Limits the size of all text boxes */
+    resize: none !important;
+    max-height: 100px !important;
+}
+
+/* Needed  on students and my projects pages but not on projects page? */
+
+.ui.header:first-child {
+    margin-top: 1px !important;
+}
+
+.contentwrapper {
+    margin: 10px;
+}
+
+/* LARGE ELEMENTS END */
+
+/* NAVIGATION*/
+
+/* Places the mobile sidebar above all page content */
+
+.sidebar {
+    z-index: 1500 !important;
+}
+
+/* NAVIGATION END*/
+
+/* SCROLLING SETTINGS */
+
+/* Limits container height and enables scroll bar. Used in accordion on front page */
+
+.limited {
+    max-height: 200px !important;
+    overflow-y: scroll;
+}
+
+#biotablimited {
+    max-height: 300px !important;
+    overflow-y: scroll !important;
+}
+
+/* WIP: Enables table scrolling when screen width is too low */
+
+.table-wrapper {
+    height: 300px;
+    overflow-y: scroll;
+    overflow-x: scroll;
+}
+
+.modal {
+    max-height: 95% !important;
+    overflow: scroll;
+}
+
+/* SCROLLING SETTINGS END */
+
+/* WORD CUTOUT */
+
+.truncate {
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.headerTruncate {
+    max-width: 59%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tableTruncate {
+    max-width: 99%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.descriptionTruncate {
+    max-height: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.listTruncate {
+    max-width: 97%;
+    overflow: hidden;
+}
+
+/* Breaks long words to prevent overflow*/
+
+.wordBreak {
+    white-space: pre-wrap;
+    overflow-wrap: break-word !important;
+    word-wrap: break-word;
+}
+
+.wordBreakDesc {
+    overflow-wrap: break-word !important;
+    word-wrap: break-word;
+}
+
+/* WORD CUTOUT END */
+
+/* SIZE POSITION ADJUSTMENTS */
+
+.project-list {
+    opacity: 0.9;
+    transition: 0.3s !important;
+    max-height: 110px;
+    overflow: hidden;
+}
+
+.nopadding {
+    padding: 0px !important;
+}
+
+#wrapper {
+    margin: 2em 2px 5em 2px;
+}
+
+.ui.label {
+    /* Prevents label edges from overflowing and overlapping */
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+}
+
+/* SIZE POSITION ADJUSTMENTS END */
+
+.inv {
+    /* WIP: Makes tag font more readable */
+    color: #ffffff;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+
+.label {
+    border: 1px solid black !important;
+}
+
+/* EFFECTS */
+
+.hshadow {
+    color: #000;
+    text-shadow: 1px 0 0 #93ffe8, 0 -1px 0 #93ffe8, 0 1px 0 #93ffe8, -1px 0 0 #93ffe8;
+}
+
+.help:hover {
+    color: red;
+}
+
+a:hover {
+    color: green;
+}
+
+.project-list:hover {
+    opacity: 1;
+    background-color: #e2e2e2 !important;
+    max-height: 300px;
+}
+
+/* EFFECTS  END*/
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 480px) {
+    .projectImage {
+        width: 75px !important;
+    }
+    .contentwrapper {
+        margin-bottom: 5% !important;
+    }
+    .disappear {
+        width: 75px !important;
+    }
+    .project-list .content {
+        padding-left: 2px !important;
+    }
+    .project-list {
+        max-height: 200px !important;
+    }
+}
+
+@media only screen and (max-width: 645px) {
+    .contentwrapper {
+        margin: 2px;
+    }
+    .ui.container {
+        margin-left: 2px !important;
+        margin-right: 2px !important;
+    }
+    #desktopMenu {
+        display: none !important;
+    }
+    #mobileBurger {
+        display: vertical table;
+    }
+    #testingA:hover>#testingB {
+        width: 75px !important;
+    }
+}
+
+@media only screen and (min-width:646px) {
+    #mobileBurger {
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width:767px) {
+    .card {
+        width: 400px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .card {
+        width: 500px !important;
+    }
+}
+
+/* MEDIA QUERIES END */

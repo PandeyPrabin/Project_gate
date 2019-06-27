@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="Semantic-UI-CSS-master/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="Resources/style.css">
+    <script src="Resources/jquery-3.3.1.min.js"></script>
+    <script src="Semantic-UI-CSS-master/semantic.min.js"></script>
+    <title>Register | Project Gate </title>
+    <script>
+        //Used for form validation
+
+        $(document).ready(function () {
+            $('.ui.form')
+                .form({
+                    fields: {
+                        FirstName: {
+                            identifier: 'firstName',
+                            rules: [{
+                                type: 'empty',
+                                prompt: 'Please enter your given name'
+                            }]
+                        },
+                        lastName: {
+                            identifier: 'lastName',
+                            rules: [{
+                                type: 'empty',
+                                prompt: 'Please enter your surname'
+                            }]
+                        },
+
+                        email: {
+                            identifier: 'email',
+                            rules: [{
+                                type: 'empty',
+                                prompt: 'Please enter your email'
+                            }, {
+                                type: 'email',
+                                prompt: 'Please enter a valid email'
+                            }]
+                        },
+
+                        password: {
+                            identifier: 'password',
+                            rules: [{
+                                    type: 'empty',
+                                    prompt: 'Please enter a password'
+                                },
+                                {
+                                    type: 'minLength[6]',
+                                    prompt: 'Your password must be at least {ruleValue} characters'
+                                }
+                            ]
+                        },
+
+                        passwordConfirm: {
+                            identifier: 'rePassword',
+                            rules: [{
+                                    type: 'match[password]',
+                                    prompt: 'Password don\'t match'
+                                },
+                                {
+                                    type: 'empty'
+                                }
+                            ]
+                        },
+
+                        terms: {
+                            identifier: 'terms',
+                            rules: [{
+                                type: 'checked',
+                                prompt: 'You must agree to the terms and conditions'
+                            }]
+                        }
+
+                    }
+                });
+        });
+    </script>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <div class="ui page grid">
+
+            <div class="column">
+                <h2 class="ui blue center aligned icon header">
+                    <i class=" users icon"></i>
+                    Register </h2>
+                <h1 class="ui header"> Register a new account</h1>
+
+                <div class="ui attached yellow icon message">
+                    <i class="exclamation circle icon"></i>
+                    <div class="content">
+                        <div class="header">
+                            To be able to join the League of Legends make sure:
+                        </div>
+                        <ul>
+                            <li>You meet the requirements to work in theFIRMA projects</li>
+                            <li>You use your school issued email</li>
+                            <li>You are willing to accept the terms and conditions</li>
+                            <li>Lorem ipsum, dolor sit amet, consectetur adipiscing elit.</li>
+                        </ul>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam faucibus congue erat sit amet aliquam.
+                            Praesent iaculis mi id tortor gravida, id euismod massa molestie.</p>
+                    </div>
+                </div>
+                <form id="register" class="ui form">
+                    <div class="ui stacked secondary  segment">
+                        <div class="two fields">
+
+                            <div class=" autofocusrequired field">
+                                <label>First Name</label>
+                                <div class="ui icon input">
+                                    <i class="user icon"></i>
+                                    <input type="text" name="firstName" placeholder="First Name">
+                                </div>
+                            </div>
+                            <div class="required field">
+                                <label>Last Name</label>
+                                <div class="ui icon input">
+                                    <i class="user icon"></i>
+                                    <input type="text" name="lastName" placeholder="Last Name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="required field">
+                            <label> Email </label>
+                            <div class="ui icon input">
+                                <i class="at icon"></i>
+                                <input type="email" name="email" placeholder="Email Address">
+                            </div>
+                        </div>
+                        <div class="two fields">
+                            <div class="required field">
+                                <label>Password</label>
+                                <div class="ui icon input">
+                                    <i class="lock icon"></i>
+                                    <input type="password" name="password" placeholder="Password">
+                                </div>
+                            </div>
+                            <div class="required field">
+                                <label>Retype password</label>
+                                <div class="ui icon input">
+                                    <i class="lock icon"></i>
+                                    <input type="password" name="rePassword" placeholder="retype password">
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="required field">
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="terms" tabindex="0" value="accepted">
+                            <label id="terms" onmouseover="" style="cursor: pointer; color: blue">I have read and accepted terms & conditions </label>
+
+                            <!-- Modal layout edited in style.css -->
+
+                            <div class="ui modal terms">
+                                <i class="close icon"></i>
+                                <div class="header">
+                                    Project Gate (theFIRMA) terms and conditions
+                                </div>
+                                <div class="ui message">
+                                    Updated on 25.5.2018
+                                </div>
+                                <div class="ui header">
+                                    1. Introduction.
+                                </div>
+
+                                <div class="ui content">
+                                    These Project Gate Terms And Conditions (these “Terms” or these “PG Terms and Conditions”) contained herein on this webpage,
+                                    shall govern your use of this website, including all pages within this website (collectively
+                                    referred to herein below as this “Website”). These Terms apply in full force and effect
+                                    to your use of this Website and by using this Website, you expressly accept all terms
+                                    and conditions contained herein in full. You must not register an account, if you have
+                                    any objection to any of these Terms And Conditions.
+                                </div>
+
+                                <div class="ui header">
+                                    2. Intellectual Property Rights.
+                                </div>
+
+                                <div class="ui content">
+                                    Under these Terms, theFIRMA and/or its licensors own all rights to the intellectual property and material contained in this
+                                    Website, and owns all rights to content created by users in projects, and all such rights
+                                    are reserved. You are granted a limited license only, subject to the restrictions provided
+                                    in these Terms, for purposes of viewing the material contained on this Website,
+                                </div>
+
+
+                                <div class="ui header">
+                                    3. Restrictions.
+                                </div>
+
+                                <div class="ui content">
+                                    <h5>You are expressly and emphatically restricted from all of the following:</h5>
+
+                                    <div class="ui ordered list">
+                                        <div class="item">Lorem ipsum dolor sit amet, consectetur adipiscing elit;</div>
+                                        <div class="item">Lorem ipsum dolor sit amet, consectetur adipiscing elit;</div>
+                                        <div class="item">Lorem ipsum dolor sit amet, consectetur adipiscing elit;</div>
+                                        <div class="item">Lorem ipsum dolor sit amet, consectetur adipiscing elit;</div>
+                                        <div class="item">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
+                                    </div>
+                                </div>
+
+                                <div class="ui header">
+                                    4. Your Content.
+                                </div>
+
+                                <div class="ui content">
+                                    By registering an account, you acknowledge that all your base are belong to us, and that you give up all rights to content
+                                    you have created in theFIRMA projects. Lorem ipsum ftw.
+                                </div>
+
+
+
+                                <div class="ui header">
+                                    5. No warranties.
+                                </div>
+
+                                <div class="ui content">
+                                    This Website and all of its services are provided “as is,” with all faults, and theFIRMA makes no express or implied representations
+                                    or warranties, of any kind related to this Website or the materials contained on this
+                                    Website. Additionally, nothing contained on this Website shall be construed as providing
+                                    consult or advice to you.
+                                </div>
+
+                                <div class="ui header">
+                                    6. Lorem ipsum.
+                                </div>
+
+                                <div class="ui content">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis laoreet erat, a posuere ex iaculis pharetra.
+                                    Pellentesque lobortis tincidunt nibh, id sollicitudin lectus gravida id. Duis nibh est,
+                                    gravida elementum magna quis, iaculis vestibulum mauris. Nullam eros turpis, dignissim
+                                    ut orci id, suscipit ullamcorper dolor. Quisque pharetra pretium vehicula. Ut pretium
+                                    sit amet nisl quis dignissim. Fusce porta mi ut purus hendrerit eleifend. Vestibulum
+                                    commodo dolor nec mauris porttitor, nec malesuada dolor ultrices. Vestibulum at leo turpis.
+                                    In et commodo sem. Donec dapibus mauris in lorem pharetra sodales. Duis et nunc enim.
+                                    Etiam venenatis rutrum molestie. Pellentesque vehicula nec diam mollis vulputate.
+                                </div>
+
+
+                                <div class="actions">
+                                    <div class="ui cancel button">Cancel</div>
+                                    <div id="accept" class="ui blue approve button">Accept terms</div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <script>
+                        // Used for terms and conditions popup
+                        $(function () {
+                            $("#terms").click(function () {
+                                $(".terms").modal('show');
+                            });
+                            $(".terms").modal({
+                                closable: true,
+                            });
+
+                            $(".terms").modal({
+                                onApprove: function () {
+                                    window.alert('Terms accepted!');
+                                }
+                            })
+
+                        });
+                    </script>
+
+
+                    <div class="ui error message"></div>
+
+
+                    <button class="ui primary button" type="submit">Register</button>
+                    <div class="ui message">
+                        Already registered?
+                        <a href="login.html">Login!</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

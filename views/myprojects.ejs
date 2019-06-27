@@ -1,0 +1,35 @@
+<div class="ui secondary segment">
+  <h1 class="ui header">My projects</h1>
+</div>
+<div class="ui  divider"></div>
+
+<div class="ui container">
+  <!-- Checking if the user has projects. If not, then this 'block' will be displayed. -->
+    <% if(Object.keys(data).length === 0){ %>
+      <div class="ui center aligned raised blue secondary segment">
+        <h1 style="color: black;">You don't have any projects.</h1>
+        <a class="ui blue button" href="./projects">Search projects</a>
+      </div>
+      <%}else {%>
+  <div class="ui secondary segment nopadding">
+    <div class="ui unstackable divided items">
+        <% data.forEach(function(row, i){ %>
+          <a href="/project/<%-row.id%>" class=" item project project-list ">
+              <div class="ui left floated small image projectImage">
+                <div class="ui small fluid blue label"> <%-row.status%></div>
+                  <img src="<% if(row.imagepath) { %><%-row.imagepath%><% } else { %>/Resources/square-image.png<% } %>" alt="project image">
+              </div>
+              <div class="content">
+                <div class="ui header listTruncate"> <%-row.name%></div>
+                  <div class="meta">
+                    Start date: <%-moment(row.startdate).format( 'MMM-DD-YYYY')%>
+                    <br> Deadline: <%-moment(row.enddate).format( 'MMM-DD-YYYY')%>
+                  </div>
+                
+              </div>
+          </a>
+        <% }); %>
+        <% } %>
+    </div>
+  </div>
+</div>

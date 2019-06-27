@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="Semantic-UI-CSS-master/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="Resources/style.css">
+  <script src="Resources/jquery-3.3.1.min.js"></script>
+  <script src="Semantic-UI-CSS-master/semantic.min.js"></script>
+  <title> Project Gate </title>
+
+</head>
+
+
+  <!--Donot remove any code below this line-->
+
+<body style="background-image: url(Resources/banner.jpg); background-attachment: fixed;">
+
+
+  <!--/////////////////////////////////////////Navigation menu\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+  <!-- <h1 class="ui centered blue header">Project Gate</h1> -->
+
+
+  <div id="desktopMenu" class="ui fixed borderless menu ">
+    <a href="index.html" class="active item">
+      <i class="blue home icon"></i>
+    </a>
+    <a href="projects.html" class="item"> Projects </a>
+    <a href="students.html" class="item"> Students </a>
+    <a href="about.html" class="item"> About Us </a>
+
+    <div class="ui right menu">
+      <div class="ui compact menu">
+
+        <div class="item" title="my profile">
+          <a href="profile.html">
+            <i class="large user circle icon"></i>
+          </a>
+        </div>
+
+        <div class="item" title="Logout">
+          <a href="login.html">
+            <i class="large sign out alternate icon"></i>
+          </a>
+        </div>
+
+
+        <div class="ui simple dropdown item">
+          <i class="cog icon"></i>
+          <div class="menu">
+            <a href="usermanagement.html" class="item">
+              Manage users </a>
+
+            <a href="tagmanagement.html" class="item">
+              Manage tags</a>
+
+            <a href="myprojects.html" class="item">
+              My projects</a>
+
+            <a href="settings.html" class="item">
+              Settings</a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- /////////////////////////////////////Mobile menu\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+  <div id="mobileMenu" class="ui fixed menu">
+    <div class="ui simple dropdown item">
+      <i class="bars icon"></i>
+      <div class="menu">
+        <div class="item">
+          <a href="projects.html">Projects</a>
+        </div>
+        <div class="item">
+          <a href="students.html"> students</a>
+        </div>
+        <div class="item">
+          <a href="about.html"> about</a>
+        </div>
+      </div>´
+
+
+
+
+    </div>
+    <a href="index.html" class="ui centered blue header"> Project Gate </a>
+
+    <div class="ui right menu">
+      <div class="ui simple dropdown item">
+        <i class="cog icon"></i>
+        <div class="menu">
+          
+          <a class="item">
+             Profile
+          </a>
+          <div class="item">
+            <a href="usermanagement.html">Manage users</a>
+          </div>
+          <div class="item">
+            <a href="tagmanagement.html">Manage tags</a>
+          </div>
+          <div class="item">
+            <a href="myprojects.html">My projects</a>
+          </div>
+          <div class="item">
+            <a href="settings.html">Settings</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <a href="login.html" title="Logout" class="logout">
+        <i class="large sign out alternate icon"></i>
+      </a>
+    </div>
+  </div>
+
+  <!--//////////////////////////////////Page content starts\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+  <div id="wrapper">
+    <div class="ui yellow message ">
+      <i class="close icon"></i>
+      <div class="header">
+        <i class="long arrow alternate right icon"></i>
+        Todo: Update your profile!
+
+      </div>
+      <p>To receive project recommendations and apply for projects, please update your profile information
+        <a href="editprofile.html">here.</a>
+      </p>
+    </div>
+
+    <div class="ui stackable grid">
+      <div class="row">
+
+        <div class="center aligned starter column">
+          <div class="slideshow-container">
+
+
+            <div class="diaesitys fade">
+              <div class="ui huge message page grid slideri">
+                <h1 class="ui huge header">Welcome to Project Gate! </h1>
+                <div class="ui text container">
+                  <br>
+                  <p class="ui grey header" id="date"></p>
+                </div>
+                <div class="sixteen wide column">
+                  <div class="ui three statistics">
+
+                    <div class="ui statistic">
+                      <div class="value">
+                        12
+                      </div>
+                      <div class="label">
+                        Registered users
+                      </div>
+                    </div>
+                    <div class="ui statistic">
+                      <div class="value">
+                        <i class="hand lizard icon"></i>200
+                      </div>
+                      <div class="label">
+                        hot potatoes
+                      </div>
+                    </div>
+
+                    <div class="ui statistic">
+                      <div class="value">
+                        over 9000
+                      </div>
+                      <div class="label">
+                        Completed projects
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="diaesitys fade">
+              <div class="ui huge message page grid slideri">
+                <h1 class="ui huge header"> Try the new Colgate
+                  <i class="trademark  icon"></i> Max white! </h1>
+                <a href="https://www.colgate.fi/">
+                  <img src="Resources/colgateadd.jpg" alt="buy colgate">
+                </a>
+              </div>
+            </div>
+
+            <div class="diaesitys fade">
+              <div class="ui huge message page grid slideri">
+
+                <h1 class="ui huge header">Project Gate is sponsored by: </h1>
+                <div class="ui container">
+                  <img class="ui medium middle aligned image" src="Resources/firmaLarge.png" alt="theFIRMA logo">
+                  <img class="ui medium middle aligned image" src="Resources/colgate.png" alt="Colgate logo">
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+
+      <script>
+        // For dispaying the date for no reason
+        var d = new Date();
+        document.getElementById("date").innerHTML = "Today is: " + d.toDateString();
+
+
+        //for closing the message box on top of the page
+        $('.message .close')
+          .on('click', function () {
+            $(this)
+              .closest('.message')
+              .transition('fade');
+          });
+      </script>
+
+      <div class="ten wide column">
+
+        <div class="ui icon message">
+          <img src="Resources/Marutei_Tsurunen.jpg" class="ui small image" alt="Marutei">
+          <div class="content">
+            <div class="header">
+              Message of the day #12
+            </div>
+            <p>
+              <span style="font-weight: bold"> Joko Marutei Tsurunen on mainittu?</span>
+              <br> Tsurunen toimi demokraattien edustajana Japanin parlamentin ylähuoneessa vuosina 2002–2013 sen ensimmäisenä
+              länsimaalaissyntyisenä jäsenenä. Ihan helvetin kova saavutus, kun miettii, että kuinka epäluuloisia japanilaiset
+              ovat ulkomaalaisia kohtaan. Toki Suomi on eräänlainen poikkeus, vanhempi väestö tietää ja arvostaa Mannerheimia
+              ja suomalaisia. Ilmeisesti aika konservatiivinen poliitikko ja sellaisestahan japskit tykkää.</p>
+          </div>
+
+        </div>
+
+        <script>
+          var slideIndex = 0;
+          showSlides();
+
+          function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("diaesitys");
+            for (i = 0; i < slides.length; i++) {
+              slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+              slideIndex = 1
+            }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 4000); // change image 1000 = 1 second
+          }
+        </script>
+
+        <div class="ui section divider"></div>
+        <div class="ui segment">
+          <img src="Resources/pexels-photo-1115191.jpeg" class="ui left floated medium image" alt="placeholder">
+          <div class="ui header"> To do or not to do?</div>
+          <p class="bold">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis laoreet erat, a posuere ex iaculis pharetra.
+            Pellentesque lobortis tincidunt nibh, id sollicitudin lectus gravida id. Duis nibh est, gravida elementum magna
+            quis, iaculis vestibulum mauris. Nullam eros turpis, dignissim ut orci id, suscipit ullamcorper dolor. Quisque
+            pharetra pretium vehicula. Ut pretium sit amet nisl quis dignissim. Fusce porta mi ut purus hendrerit eleifend.
+            Vestibulum commodo dolor nec mauris porttitor, nec malesuada dolor ultrices. Vestibulum at leo turpis. In et
+            commodo sem. Donec dapibus mauris in lorem pharetra sodales. Duis et nunc enim. Etiam venenatis rutrum molestie.
+            Pellentesque vehicula nec diam mollis vulputate.
+          </p>
+
+        </div>
+        <div class="ui segment">
+          <img src="Resources/pexels-photo-1115191.jpeg" class="ui right floated medium image" alt="placeholder">
+          <div class="ui centered blue header"> Finding Nemo made easy!</div>
+          <p class="bold">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis laoreet erat, a posuere ex iaculis pharetra.
+            Pellentesque lobortis tincidunt nibh, id sollicitudin lectus gravida id. Duis nibh est, gravida elementum magna
+            quis, iaculis vestibulum mauris. Nullam eros turpis, dignissim ut orci id, suscipit ullamcorper dolor. Quisque
+            pharetra pretium vehicula. Ut pretium sit amet nisl quis dignissim. Fusce porta mi ut purus hendrerit eleifend.
+            Vestibulum commodo dolor nec mauris porttitor, nec malesuada dolor ultrices. Vestibulum at leo turpis. In et
+            commodo sem. Donec dapibus mauris in lorem pharetra sodales. Duis et nunc enim. Etiam venenatis rutrum molestie.
+            Pellentesque vehicula nec diam mollis vulputate.
+          </p>
+
+
+        </div>
+
+        <div class="ui section divider"></div>
+
+      </div>
+      <div class="six wide column">
+
+        <!-- Accordion layout edited in style.css -->
+
+        <div class="ui accordion">
+          <div class="ui fluid right floated vertical menu">
+            <div class="title">
+              <div class="ui header"> News and info
+                <i class="grey plus square icon"></i>
+              </div>
+            </div>
+
+            <div class="limited content">
+              <div class="ui relaxed divided list">
+                <div class="item">
+                  <i class="large blue info circle middle aligned icon"></i>
+                  <div class="content">
+                    <a class="header">Half life 3 finally confirmed!</a>
+                    <div class="description">31.12.2099</div>
+                  </div>
+                </div>
+                <div class="item">
+                  <i class="large red exclamation triangle middle aligned icon"></i>
+                  <div class="content">
+                    <a class="header"> Important system update [Completed]</a>
+                    <div class="description">Updated 22 mins ago</div>
+                  </div>
+                </div>
+                <div class="item">
+                  <i class="large green smile middle aligned icon"></i>
+                  <div class="content">
+                    <a class="header">Lorem Ipsum is here!</a>
+                    <div class="description"> 5 hours ago</div>
+                  </div>
+                </div>
+
+                <div class="item">
+                  <i class="large green smile middle aligned icon"></i>
+                  <div class="content">
+                    <a class="header">Lorem Ipsum is here!</a>
+                    <div class="description"> 5 hours ago</div>
+                  </div>
+                </div>
+
+                <div class="item">
+                  <i class="large green smile middle aligned icon"></i>
+                  <div class="content">
+                    <a class="header">Lorem Ipsum is here!</a>
+                    <div class="description"> 5 hours ago</div>
+                  </div>
+                </div>
+
+                <div class="item">
+                  <i class="large green smile middle aligned icon"></i>
+                  <div class="content">
+                    <a class="header">Lorem Ipsum is here!</a>
+                    <div class="description"> 5 hours ago</div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class="ui section divider"></div>
+
+
+        <div class="ui fluid right floated vertical menu">
+          <div class="ui accordion">
+            <div class="title">
+              <div class="ui header"> My projects
+                <i class="grey minus square icon"></i>
+              </div>
+            </div>
+            <div class="limited active content">
+              <div class="ui relaxed divided list">
+                <div class="item">
+                  <a class="ui red label">Project Manager</a>
+                  <div class="content">
+                    <a href="project.html" class="header"> Project Gate </a>
+                    <div class="description">Since 06/2017</div>
+                  </div>
+                </div>
+                <div class="item">
+                  <a class="ui blue label">Backend developer</a>
+                  <div class="content">
+                    <a href="project.html" class="header">Other Sample here!</a>
+                    <div class="description">Since 03/2018</div>
+                  </div>
+                </div>
+                <div class="item">
+                  <a class="ui label">Lorem Ipsum</a>
+                  <div class="content">
+                    <a href="project.html" class="header">First sample</a>
+                    <div class="description">Since 04/2018</div>
+                  </div>
+                </div>
+                <div class="item">
+                  <a class="ui black label">Cheater</a>
+                  <div class="content">
+                    <a href="project.html" class="header"> CS:GO cheats</a>
+                    <div class="description"> No idea</div>
+                  </div>
+                </div>
+
+                <div class="item">
+                  <a class="ui pink label">Something</a>
+                  <div class="content">
+                    <a href="project.html" class="header">First sample</a>
+                    <div class="description">Until 06/2018</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+
+
+            <div class="title">
+              <div class="ui header"> Latest projects
+                <i class="grey minus square icon"></i>
+              </div>
+            </div>
+            <div class="limited content">
+              <div class="ui relaxed divided list">
+                <div class="item">
+                  <a class="ui red label">30.5.2018</a>
+                  <div class="content">
+                    <a href="project.html" class="header"> Sample project</a>
+                    <div class="description">5 minutes ago</div>
+                  </div>
+                </div>
+                <div class="item">
+                  <a class="ui blue label">10.9.2018</a>
+                  <div class="content">
+                    <a href="project.html" class="header">Other Sample here!</a>
+                    <div class="description">29.4.2018</div>
+                  </div>
+                </div>
+                <div class="item">
+                  <a class="ui label">10.2.2018</a>
+                  <div class="content">
+                    <a href="project.html" class="header">First sample</a>
+                    <div class="description">13.1.2018</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <script>
+      // Used for opening and closing 'news and info' window
+      $('.plus').click(function () {
+        $(this).toggleClass('minus');
+        $(this).toggleClass('plus');
+      });
+      $('.minus').click(function () {
+        $(this).toggleClass('plus');
+        $(this).toggleClass('minus');
+      });
+
+      $('.ui.accordion')
+        .accordion();
+    </script>
+
+    <!--Wrapper ends-->
+  </div>
+  <!--/////////////////////////////////////Page footer\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+  <div class="ui black inverted vertical footer segment">
+
+    <div class="ui center aligned container">
+      <div class="ui stackable inverted grid">
+        <div class="three wide column">
+          <h4 class="ui inverted header">Community</h4>
+          <div class="ui inverted link list">
+            <a class="item" href="#">Lorem ipsum</a>
+          </div>
+        </div>
+
+        <div class="three wide column">
+          <h4 class="ui inverted header">Partners</h4>
+          <div class="ui inverted link list">
+            <a class="item" href="#">Link 1</a>
+          </div>
+        </div>
+
+        <div class="seven wide right floated column">
+          <h4 class="ui inverted teal header">Some motivative text</h4>
+          <p> You could be the next potato. Do stuff and win.</p>
+          <form action="register.html" target="_top">
+            <button type="submit" class="ui large teal button">Join Today</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="ui inverted section divider"></div>
+      <img src="Resources/firma.png" alt="theFIRMA logo" class="ui centered  image">
+      <div class="ui horizontal inverted small divided link list">
+        <a class="item" href="http://thefirma.fi" target="_blank">theFIRMA ist nicht hier!</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

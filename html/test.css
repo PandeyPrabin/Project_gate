@@ -1,0 +1,20 @@
+body {
+    background: #999999;
+    background: #ffffff;
+    background: #020202;
+    background: #050505;   /*muokattu, lisätty rivi */
+
+}
+
+.site-footer {
+    background: #689dff;
+      color: #ffffff !important;
+  }
+
+header {
+    background-color: #c0bfbf;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+
+}
+

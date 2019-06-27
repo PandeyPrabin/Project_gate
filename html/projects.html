@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="Semantic-UI-CSS-master/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="Resources/style.css">
+    <script src="Resources/jquery-3.3.1.min.js"></script>
+    <script src="Semantic-UI-CSS-master/semantic.min.js"></script>
+    <title> Projects | Project Gate </title>
+</head>
+
+<body style="background-image: url(Resources/banner.jpg); background-attachment: fixed;">
+
+    <!--/////////////////////////////////////////Navigation menu\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+    <div id="desktopMenu" class="ui fixed borderless menu ">
+        <a href="index.html" class="item">
+            <i class="home icon"></i>
+        </a>
+        <a href="projects.html" class="item"> Projects </a>
+        <a href="students.html" class="item"> Students </a>
+        <a href="about.html" class="item"> About Us </a>
+
+        <div class="ui right menu">
+            <div class="ui compact menu">
+
+                <div class="item" title="my profile">
+                    <a href="profile.html">
+                        <i class="large user circle icon"></i>
+                    </a>
+                </div>
+
+                <div class="item" title="Logout">
+                    <a href="login.html">
+                        <i class="large sign out alternate icon"></i>
+                    </a>
+                </div>
+
+
+                <div class="ui simple dropdown item">
+                    <i class="cog icon"></i>
+                    <div class="menu">
+                        <a href="usermanagement.html" class="item">
+                            Manage users </a>
+
+                        <a href="tagmanagement.html" class="item">
+                            Manage tags</a>
+
+                        <a href="myprojects.html" class="item">
+                            My projects</a>
+
+                        <a href="settings.html" class="item">
+                            Settings</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- /////////////////////////////////////Mobile menu\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+    <div id="mobileMenu" class="ui fixed menu">
+        <div class="ui simple dropdown item">
+            <i class="bars icon"></i>
+            <div class="menu">
+                <div class="item">
+                    <a href="projects.html">Projects</a>
+                </div>
+                <div class="item">
+                    <a href="students.html"> students</a>
+                </div>
+                <div class="item">
+                    <a href="about.html"> about</a>
+                </div>
+            </div>´
+
+        </div>
+        <a href="index.html" class="ui centered blue header"> Project Gate </a>
+
+        <div class="ui right menu">
+            <div class="ui simple dropdown item">
+                <i class="cog icon"></i>
+                <div class="menu">
+                    <div class="item">
+                        <a href="profile.html">Profile</a>
+                    </div>
+                    <div class="item">
+                        <a href="usermanagement.html">Manage users</a>
+                    </div>
+                    <div class="item">
+                        <a href="tagmanagement.html">Manage tags</a>
+                    </div>
+                    <div class="item">
+                        <a href="myprojects.html">My projects</a>
+                    </div>
+                    <div class="item">
+                        <a href="settings.html">Settings</a>
+                    </div>
+                    <div class="item">
+                        <a href="login.html">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <a href="login.html" title="Logout" class="logout">
+                <i class="large sign out alternate icon"></i>
+            </a>
+        </div>
+    </div>
+
+    <!--//////////////////////////////////Page content starts\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+    <div id="wrapper">
+
+        <div class="ui huge header">List of projects
+
+            <!--////////////////////////////////////////project search\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+            <a class="ui blue label" href="newproject.html">
+                <i class="plus circle  icon"></i> New project </a>
+        </div>
+
+        <div class="ui stacked secondary blue  segment">
+            <div class="ui center aligned container">
+                <div class="ui form">
+                    <div class="three fields">
+                        <div class="field">
+                            <label>Search...</label>
+                            <div class="ui icon input">
+                                <input type="search" placeholder="Search...">
+                                <i class="search icon"></i>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label> Sort by</label>
+                            <select class="ui  fluid dropdown">
+                                <option value="">Project Name</option>
+                                <option value=""> Open Positions </option>
+                                <option value=""> IDK </option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label>Order by</label>
+                            <select class="ui  fluid dropdown">
+                                <option value="">ASC ↑</option>
+                                <option value=""> DESC ↓ </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="two fields">
+                        <div class="field">
+                            <div class="ui checkbox">
+                                <input type="checkbox">
+                                <label>Include complete projects</label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui checkbox">
+                                <input type="checkbox">
+                                <label>Search only for projects with open positions</label>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="ui divider"></div>
+                    <button class="ui  large  primary  button" type="submit"> apply</button>
+                </div>
+            </div>
+        </div>
+
+        <!--///////////////////////////////Projects list\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+        <div class="ui hidden divider"></div>
+
+        <div class="ui  container">
+            <div class="ui  segment">
+                <div class="ui unstackable relaxed divided items">
+
+                    <a href="project.html" class=" item project-list">
+                        <div class=" ui small image project-image">
+                            <img src="Resources/square-image.png" alt="placeholder">
+                        </div>
+                        <div class="content">
+                            <div class="header">Sample Project</div>
+                            <div class="meta">
+                                Start date: 17.6.2018
+                            </div>
+                            <div class="extra">
+                                <div class="ui purple label">
+                                    <i class="up arrow icon"></i> incoming</div>
+                                <div class="ui blue label"> Open positions</div>
+
+                            </div>
+                            <div class="description">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquam tellus neque,
+                                    a condimentum erat venenatis eget. Class aptent taciti sociosqu ad litora torquent per
+                                    conubia nostra, per inceptos himenaeos. Donec molestie ultricies pulvinar. Fusce ac aliquam
+                                    ipsum, sit amet sollicitudin dolor. Vivamus vulputate faucibus libero, quis sodales purus
+                                    bibendum nec.</p>
+                            </div>
+
+
+                        </div>
+                    </a>
+
+                    <a href="project.html" class="item project-list">
+                        <div class="ui small image project-image">
+                            <img src="Resources/square-image.png" alt="placeholder">
+                        </div>
+                        <div class="content">
+                            <div class="header">Java Project</div>
+                            <div class="meta">
+                                Start date: 5.5.2018 Deadline: 31.12.2099
+                            </div>
+                            <div class="extra">
+                                <div class="ui yellow label">
+                                    <i class="right arrow icon"></i> Ongoing</div>
+                                <div class="ui blue label"> Open positions</div>
+                            </div>
+                            <div class="description">
+                                <p>Lorem ipsum dolor sit amet, pri ei sale sonet ornatus. Usu dicunt omnium cu. In vix dicam
+                                    fuisset adipiscing, cibo delenit ius id, eu regione fuisset vix. Ne modo eruditi vim.
+                                    Mea nostro mentitum conceptam in. Ei cum quaestio eleifend oportere.Lorem ipsum dolor
+                                    sit amet, consectetur adipiscing elit. Pellentesque aliquam tellus neque, a condimentum
+                                    erat venenatis eget. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
+                                    per inceptos himenaeos. Donec molestie ultricies pulvinar. Fusce ac aliquam ipsum, sit
+                                    amet sollicitudin dolor. Vivamus vulputate faucibus libero, quis sodales purus bibendum
+                                    nec.
+                                </p>
+                            </div>
+
+
+                        </div>
+                    </a>
+
+                    <a href="project.html" class="item project-list">
+                        <div class="ui small image project-image">
+                            <img src="Resources/square-image.png" alt="placeholder">
+                        </div>
+                        <div class="content">
+                            <div class="header">We shall use hacks</div>
+                            <div class="meta">
+                                Start date: 4.5.2018 Completed on: 5.6.2018
+                            </div>
+                            <div class="extra">
+                                <div class="ui green label">
+                                    <i class="down arrow icon"></i> completed</div>
+                            </div>
+                            <div class="description">
+                                <p>Lorem ipsum dolor sit amet, pri ei sale sonet ornatus. Usu dicunt omnium cu. In vix dicam
+                                    fuisset adipiscing, cibo delenit ius id, eu regione fuisset vix. Ne modo eruditi vim.
+                                    Mea nostro mentitum conceptam in. Ei cum quaestio eleifend oportere.</p>
+                            </div>
+
+
+
+                        </div>
+                    </a>
+
+                    <a href="project.html" class="item project-list">
+                        <div class="ui small image project-image">
+                            <img src="Resources/square-image.png" alt="placeholder">
+                        </div>
+                        <div class="content">
+                            <div class="header">Lorem Ipsum</div>
+                            <div class="meta">
+                                Start date: 4.4.2018
+                            </div>
+                            <div class="extra">
+                                <div class="ui red label">
+                                    <i class="left arrow icon"></i> Something wrong!</div>
+                            </div>
+                            <div class="description">
+                                <p>Lorem ipsum dolor sit amet, pri ei sale sonet ornatus. Usu dicunt omnium cu. In vix dicam
+                                    fuisset adipiscing, cibo delenit ius id, eu regione fuisset vix. Ne modo eruditi vim.
+                                    Mea nostro mentitum conceptam in. Ei cum quaestio eleifend oportere.</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="project.html" class="item project-list">
+                        <div class="ui small image project-image">
+                            <img src="Resources/square-image.png" alt="placeholder">
+                        </div>
+                        <div class="content">
+                            <div class="header">The fun project</div>
+                            <div class="meta">
+                                Start date: 6.12.1917
+                            </div>
+                            <div class="description">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquam tellus neque,
+                                    a condimentum erat venenatis eget. Class aptent taciti sociosqu ad litora torquent per
+                                    conubia nostra, per inceptos himenaeos. Donec molestie ultricies pulvinar. Fusce ac aliquam
+                                    ipsum, sit amet sollicitudin dolor. Vivamus vulputate faucibus libero, quis sodales purus
+                                    bibendum nec. Sed cursus ipsum ut mi pellentesque rutrum et ut urna. Ut vestibulum malesuada
+                                    velit. In euismod, tortor dictum fermentum efficitur, nisi ex porta elit, ut ultrices
+                                    ante magna vel dolor. Integer ut arcu lobortis, convallis augue sit amet, fermentum nibh.</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!--List ends-->
+                </div>
+                <!--Segment-->
+            </div>
+            <!--Container-->
+        </div>
+        <!--Wrapper-->
+    </div>
+
+
+    <!--/////////////////////////////////////Page footer\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+    <div class="ui black inverted vertical footer segment">
+
+        <div class="ui center aligned container">
+            <div class="ui stackable inverted grid">
+                <div class="three wide column">
+                    <h4 class="ui inverted header">Community</h4>
+                    <div class="ui inverted link list">
+                        <a class="item" href="#">Lorem ipsum</a>
+                    </div>
+                </div>
+
+                <div class="three wide column">
+                    <h4 class="ui inverted header">Partners</h4>
+                    <div class="ui inverted link list">
+                        <a class="item" href="#">Link 1</a>
+                    </div>
+                </div>
+
+                <div class="seven wide right floated column">
+                    <h4 class="ui inverted teal header">Some motivative text</h4>
+                    <p> You could be the next potato. Do stuff and win.</p>
+                    <form action="register.html" target="_top">
+                        <button type="submit" class="ui large teal button">Join Today</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="ui inverted section divider"></div>
+            <img src="Resources/firma.png" alt="theFIRMA logo" class="ui centered  image">
+            <div class="ui horizontal inverted small divided link list">
+                <a class="item" href="http://thefirma.fi" target="_blank">theFIRMA ist nicht hier!</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

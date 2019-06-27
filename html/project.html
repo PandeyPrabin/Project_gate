@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="Semantic-UI-CSS-master/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="Resources/style.css">
+    <script src="Resources/jquery-3.3.1.min.js"></script>
+    <script src="Semantic-UI-CSS-master/semantic.min.js"></script>
+    <title> Project name | Project Gate </title>
+</head>
+
+<body style="background-image: url(Resources/banner.jpg); background-attachment: fixed;">
+
+    <!--/////////////////////////////////////////Navigation menu\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+    <div id="desktopMenu" class="ui fixed borderless menu ">
+        <a href="index.html" class="item">
+            <i class="home icon"></i>
+        </a>
+        <a href="projects.html" class="item"> Projects </a>
+        <a href="students.html" class="item"> Students </a>
+        <a href="about.html" class="item"> About Us </a>
+
+        <div class="ui right menu">
+            <div class="ui compact menu">
+
+                <div class="item" title="my profile">
+                    <a href="profile.html">
+                        <i class="large user circle icon"></i>
+                    </a>
+                </div>
+
+                <div class="item" title="Logout">
+                    <a href="login.html">
+                        <i class="large sign out alternate icon"></i>
+                    </a>
+                </div>
+
+
+                <div class="ui simple dropdown item">
+                    <i class="cog icon"></i>
+                    <div class="menu">
+                        <a href="usermanagement.html" class="item">
+                            Manage users </a>
+
+                        <a href="tagmanagement.html" class="item">
+                            Manage tags</a>
+
+                        <a href="myprojects.html" class="item">
+                            My projects</a>
+
+                        <a href="settings.html" class="item">
+                            Settings</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- /////////////////////////////////////Mobile menu\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+    <div id="mobileMenu" class="ui fixed menu">
+        <div class="ui simple dropdown item">
+            <i class="bars icon"></i>
+            <div class="menu">
+                <div class="item">
+                    <a href="projects.html">Projects</a>
+                </div>
+                <div class="item">
+                    <a href="students.html"> students</a>
+                </div>
+                <div class="item">
+                    <a href="about.html"> about</a>
+                </div>
+            </div>´
+
+        </div>
+        <a href="index.html" class="ui centered blue header"> Project Gate </a>
+
+        <div class="ui right menu">
+            <div class="ui simple dropdown item">
+                <i class="cog icon"></i>
+                <div class="menu">
+                    <div class="item">
+                        <a href="profile.html">Profile</a>
+                    </div>
+                    <div class="item">
+                        <a href="usermanagement.html">Manage users</a>
+                    </div>
+                    <div class="item">
+                        <a href="tagmanagement.html">Manage tags</a>
+                    </div>
+                    <div class="item">
+                        <a href="myprojects.html">My projects</a>
+                    </div>
+                    <div class="item">
+                        <a href="settings.html">Settings</a>
+                    </div>
+                    <div class="item">
+                        <a href="login.html">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <a href="login.html" title="Logout" class="logout">
+                <i class="large sign out alternate icon"></i>
+            </a>
+        </div>
+    </div>
+    <!--//////////////////////////////////Page content starts\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+    <div id="wrapper">
+
+        <div class="ui large header"> Java Project
+
+            <a class="ui  blue label" href="newproject.html">
+                <i class="cog icon"></i> Edit</a>
+
+            <a class="ui  blue label" href="addstudent.html">
+                <i class="user plus icon"></i> Add student</a>
+
+            <a class="ui  blue label" href="addstudent.html">
+                <i class="user plus icon"></i> Suggest project </a>
+
+
+            <a class="ui  blue label " id="terms" onclick="showmodal()">
+                <i class="arrow right icon"></i> apply to project </a>
+        </div>
+
+        <div class="ui stackable grid">
+
+            <div class="five wide column">
+                <div class="ui  card">
+                    <div class="image">
+                        <img src="Resources/square-image.png" alt="project image">
+                    </div>
+
+                    <div class="extra content">
+                        <div class="ui label"> STATUS:
+                            <div class="ui yellow label">
+                                <i class="right arrow icon"></i> Ongoing</div>
+                        </div>
+
+                        <div class="ui right floated content">
+                            <div class="ui label">DEADLINE:
+                                <div class="ui red label"> 5.5.2018</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="eleven wide column">
+
+                <div class="ui segment">
+
+
+                    <div class="ui header"> Project Manager: Matti Meikäläinen</div>
+                    <div class="ui divider"></div>
+                    Open positions:
+                    <div class="ui small blue label">Web designer</div>
+                    <div class="ui small black  label">suunsoittaja</div>
+                    <div class="ui small pink  label">Master of arts</div>
+
+                    <div class="ui divider"></div>
+                    Required Skills:
+
+                    <div class="ui small yellow label">PHP</div>
+                    <div class="ui small red label">JAVA</div>
+                    <div class="ui small blue label">Haskell</div>
+                    <div class="ui small green label">ArnoldC</div>
+                    <div class="ui small purple label">Photoshop</div>
+                    <div class="ui small yellow label">C#</div>
+                </div>
+
+                <div class="ui segment" style="max-height: 350px; overflow-y: scroll;">
+                    <h2 class="ui header">Description</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur ante id leo scelerisque lacinia.
+                        Etiam efficitur pulvinar erat eget dignissim. Sed volutpat blandit accumsan. Donec eu orci lobortis,
+                        dictum diam nec, pharetra magna. Proin quis vestibulum eros. Donec erat leo, luctus sit amet vestibulum
+                        id, condimentum vel ligula. Morbi a sem lobortis, consectetur sem molestie, luctus mauris. Suspendisse
+                        rutrum et lectus eu posuere. Morbi varius dui tempor consequat tempus.</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        <h1 class="ui header"> Project Members </h1>
+        <table class="ui unstackable selectable fixed celled table">
+            <thead>
+                <tr>
+                    <th>Project member</th>
+                    <th>Status</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="selectable">
+                        <a href="profile.html" target="_blank">John Doe</a>
+                    </td>
+                    <td>Current</td>
+                    <td class="ui   purple label">Graphic designer</td>
+                    <td>
+                        <a class="ui  tiny header" href="addstudent.html">
+                            <i class="pencil alternate icon" title="Edit role"></i>
+                        </a>
+                        <a class="ui tiny  header" href="#">
+                            <i class="trash alternate icon" title="Remove user"></i>
+                        </a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="selectable">
+                        <a href="profile.html" target="_blank"> Michael kengäntekijä</a>
+                    </td>
+                    <td>Current</td>
+                    <td class="ui small red label">smoker</td>
+                    <td>
+                        <a class="ui  tiny header" href="addstudent.html">
+                            <i class="pencil alternate icon" title="Edit role"></i>
+                        </a>
+                        <a class="ui tiny  header" href="#">
+                            <i class="trash alternate icon" title="Remove user"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="selectable">
+                        <a href="profile.html" target="_blank"> Daniel Craig</a>
+                    </td>
+                    <td>11/2006-10/2015 </td>
+                    <td class="ui green label">Lead actor </td>
+                    <td>
+                        <a class="ui  tiny header" href="addstudent.html">
+                            <i class="pencil alternate icon" title="Edit role"></i>
+                        </a>
+                        <a class="ui tiny  header" href="#">
+                            <i class="trash alternate icon" title="Remove user"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h1 class="ui header"> Project applications </h1>
+        <table class="ui  unstackable selectable fixed celled table">
+            <thead>
+                <tr>
+                    <th>Applicant</th>
+                    <th>Apply date</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="selectable">
+                        <a href="profile.html" target="_blank">Julia Virtanen</a>
+                    </td>
+
+                    <td>09/09/09</td>
+                    <td class="ui   pink label"> beautify</td>
+                    <td>
+                        <a class="ui  tiny header" href="addstudent.html">
+                            <i class="check  icon" title=" Accept"></i>
+                        </a>
+                        <a class="ui tiny header" href="#">
+                            <i class="times icon" title="Reject"></i>
+                        </a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="selectable">
+                        <a href="profile.html" target="_top">Eines Leikkele</a>
+                    </td>
+                    <td>17/05/18</td>
+                    <td class="ui small green label">Designer</td>
+                    <td>
+                        <a class="ui  tiny header" href="addstudent.html">
+                            <i class="check  icon" title=" Accept"></i>
+                        </a>
+                        <a class="ui tiny header" href="#">
+                            <i class="times icon" title="Reject"></i>
+                        </a>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+
+
+
+        <div class="ui modal terms">
+            <div class="ui header">
+                Apply to project: Java project
+            </div>
+            <div class="ui hidden divider"></div>
+            <form class="ui form">
+
+                <div class="ui text container">
+                    <div class="required field">
+                        <label>Select position(s) </label>
+                        <select name="position" multiple="" class="label ui search  selection fluid dropdown">
+                            <option value=""> . </option>
+                            <option value="web design"> Coder </option>
+                            <option value="what"> Cheater </option>
+                            <option value="nope">Coffee maker</option>
+                            <option value="test"> Project master </option>
+                        </select>
+                    </div>
+
+                    <div class="ui section divider"></div>
+
+                    <div class="required field">
+                        <label>Select skill(s) </label>
+                        <select name="position" multiple="" class="label ui search  selection fluid dropdown">
+                            <option value=""> . </option>
+                            <option value="web design"> Java </option>
+                            <option value="what"> c++ </option>
+                            <option value="nope"> Faking it </option>
+                            <option value="test"> Lorem ipsum </option>
+                        </select>
+                    </div>
+
+                    <div class="ui section divider"></div>
+
+                    <div class="field">
+
+                        <label>Open letter</label>
+
+                        <textarea name="applicationDescription" placeholder="open application"></textarea>
+                    </div>
+                </div>
+            </form>
+
+            <div class="ui section divider"></div>
+
+            <div class="actions">
+                <div class="ui cancel button">Cancel</div>
+                <div id="accept" class="ui blue approve button">apply</div>
+            </div>
+        </div>
+
+
+
+        <div class="ui section divider"></div>
+
+
+        <script>
+            // multiple choice dropdown 
+            $('.label.ui.dropdown')
+                .dropdown();
+
+            // Used for  apply for project  popup
+            $(function () {
+                $("#terms").click(function () {
+                    $(".terms").modal('show');
+                });
+                $(".terms").modal({
+                    closable: true,
+                });
+
+                $(".terms").modal({
+                    onApprove: function () {
+                        window.alert('Project application sent !');
+                    }
+                })
+
+            });
+        </script>
+
+        <!--Wrapper ends-->
+    </div>
+
+    <!--/////////////////////////////////////Page footer\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+    <div class="ui black inverted vertical footer segment">
+
+        <div class="ui center aligned container">
+            <div class="ui stackable inverted grid">
+                <div class="three wide column">
+                    <h4 class="ui inverted header">Community</h4>
+                    <div class="ui inverted link list">
+                        <a class="item" href="#">Lorem ipsum</a>
+                    </div>
+                </div>
+
+                <div class="three wide column">
+                    <h4 class="ui inverted header">Partners</h4>
+                    <div class="ui inverted link list">
+                        <a class="item" href="#">Link 1</a>
+                    </div>
+                </div>
+
+                <div class="seven wide right floated column">
+                    <h4 class="ui inverted teal header">Some motivative text</h4>
+                    <p> You could be the next potato. Do stuff and win.</p>
+                    <form action="register.html" target="_top">
+                        <button type="submit" class="ui large teal button">Join Today</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="ui inverted section divider"></div>
+            <img src="Resources/firma.png" alt="theFIRMA logo" class="ui centered  image">
+            <div class="ui horizontal inverted small divided link list">
+                <a class="item" href="http://thefirma.fi" target="_blank">theFIRMA ist nicht hier!</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

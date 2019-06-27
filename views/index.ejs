@@ -1,0 +1,135 @@
+<div class="ui equal width left aligned padded grid">
+  <div class="row">
+    <div class="column">
+        <h1 class="">Welcome, <%-name%>! </h1>
+    </div>
+  </div>
+</div>
+
+<div id="frontContainer" class="ui grid">
+  <div class="eleven wide column aligned raised floated segment">
+    <!-- Button to create a project -->
+       <!-- Tab for new form -->
+       <div class="ui top attached tabular menu blue">
+          <div class="active item">Create project</div>
+        </div>
+        <!-- New form -->
+        <div class="ui bottom attached active tab segment">
+        <!-- Form content -->
+        <form class="ui form">
+        <!--Name and Skills Needed-->
+            <div class="field">
+              <div class="two fields">
+                <div class="field">
+                  <label>Name of project</label>
+                  <input type="text" name="project[name]" placeholder="Enter the name of project here">
+                </div>
+                <div class="field">
+                    <label>Skills</label>
+                    <select class="ui fluid dropdown">
+                      <option value="" placeholder="PHP"></option>
+                      <option value=""><!--Codes for the skills--></option>
+                      <option value="">PHP</option>
+                      <option value="">Wordpress Design</option>
+                      <option value="">Pagebuilder</option>
+                      <option value="">Documentation</option>
+                      <option value="">Node.js</option>
+                      <option value="">Game Development</option>
+                      <option value="">SCRUM</option>
+                      <option value="">Graphic Design</option>
+                      <option value="">Photoshop</option>
+                      <option value="">Illustrator</option>
+                      <option value="">Adobe Products(Photoshop, Illustrators etc)</option>
+                      <option value="">System Administrations</option>
+                      <option value="">Database handling</option>
+                      <option value="">C#</option>
+                      <option value="">JavaScript</option>
+                      <option value="">BootStrap</option>
+                      <option value="">Semantic UI</option>
+                    </select>
+                  </div>
+              </div>
+            </div>
+        <!-- End of Name and Skills Needed-->
+
+
+         <!--Project Manager and member-->
+         <div class="field">
+          <div class="two fields">
+
+            <div class="field">
+              <label>Project Member</label>
+              <select class="ui fluid dropdown">
+                  <option value=""><!--Codes for the Project Members--></option>
+                  <option value="">Project member 1</option>
+                 <option value="">Project member 2</option>
+              </select>
+            </div>
+
+            <div class="field">
+                <label>Project Manager</label>
+                <select class="ui fluid dropdown">
+                  <option value=""><!--Codes for the Project Managers--></option>
+                  <option value="">Project manager</option>
+                 <option value="">Project manager</option>
+                </select>
+              </div>
+          </div>
+        </div>
+    <!--Project manager and member section ends-->
+
+        <!--Start of Description-->
+        <div class="field">
+            <label>More information</label>
+            <textarea rows="40" cols="30"></textarea>
+          </div>
+        <!--Description-->
+
+            <div class="ui fluid blue button">Submit Project</div>
+          </form>
+
+        <!--Form Content-->
+        </div>
+  </div>
+
+ <!-------------------------------------Timer division starts here---------------------------------------------------------------------------------->
+  <div id="timeContainer" class="five wide column">
+  <div id="innerTime" class="ui center aligned raised blue floated segment">
+  <!--place codes of timer here-->
+  <h1>Working Hour Tracker</h1>
+  <p>This tracker keeps record of the hour worker in theFirma. Click on 'start' to start the timer and 'End' to end the shift. It automatically saves the hours worked to the database and allows you to export as an excel document later.</p>
+  <div class="ui center aligned segment">
+          <h4>Today is</h4>
+          <h2> <%-date%></h2>
+  </div>
+
+  <!--Start and End button-->
+      <div class="ui segment large buttons">
+                  <button class="ui green button">Start</button>
+                  <div class="or"></div>
+                  <button class="ui blue button">End</button>
+        </div>
+  <!--Start and End button-->
+  <!--Display time spent-->
+
+  <div class="ui equal width center aligned padded grid">
+          <div class="ui circular blue inverted center aligned segment">
+              <p>You have spent</p>
+              <h3> <%-wTime%> </h3>
+              <p>in theFirma today</p>
+          </div>
+      </div>
+  <!--Display time spent-->
+  <!--Button to save and export the excel file-->
+          <div class="ui segments">
+          <div class="two ui vertical buttons">
+                  <button class="ui green button">Save</button>
+                  <button class="ui blue button">Export</button>
+          </div>
+          </div>
+  <!--Button to save and Export the excel file-->
+      </div>
+  </div>
+
+</div>
+</div>

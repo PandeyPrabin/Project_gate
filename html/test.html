@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+
+    <title>TESTING</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* user styles */
+
+        body {
+            max-width: 900px;
+            margin: auto;
+            padding: 1em;
+        }
+
+        section {
+            margin: 2em 0.5em;
+        }
+
+        .ui.parallax {
+            height: 10em;
+        }
+
+        /* possiblly semantic styles */
+
+        .ui.parallax {
+            background-attachment: fixed;
+        }
+
+        .ui.fluid.parallax {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Header here</h1>
+    <h3>What parallax scrolling is all about</h3>
+    <article>
+        <section>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+            aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        </section>
+        <div class="ui fluid parallax" data-imgsrc="http://www.moviehdwallpapers.com/wp-content/uploads/2014/10/images-7.jpg"></div>
+        <section>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+            aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        </section>
+        <div class="ui fluid parallax" data-imgsrc="http://blog.jimdo.com/wp-content/uploads/2014/01/tree-247122.jpg"></div>
+        <div class="ui fluid parallax" data-imgsrc="http://www.moviehdwallpapers.com/wp-content/uploads/2014/10/images-7.jpg"></div>
+        <div class="ui fluid parallax" data-imgsrc="http://www.desktopwallpaperhd.net/thumbs/21/7/wallpaper-sunset-images-back-217159.jpg"></div>
+        <section>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+            aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        </section>
+        <section>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+            aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        </section>
+    </article>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        // semantic's module function
+        $.fn.uiParallax = function () {
+
+            $(this).each(function () {
+                var imageUrl = $(this).data('imgsrc');
+                $(this).css('background-image', 'url(' + imageUrl + ')');
+            });
+
+        };
+
+
+        // user's code to initialise parallaxes
+        $('.ui.parallax').uiParallax();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<div class="ui secondary segment">
+    <h1 class="ui header">Suggest Project to <%-data.firstname%> <%-data.lastname%> </h1>
+</div>
+
+<div class="ui container">
+    <div class="ui secondary segment">
+        <form class="ui form suggestionform" method="post" action="/suggest/<%-data.id%>">
+            <div class="ui segment fluid">
+                <div class="required field">
+                    <label>Project </label>
+                    <select id="project" name="project" class="ui search selection fluid dropdown" required>
+                        <option value="">Project</option>
+                        <% projects.forEach(function(project){ %>
+                        <option value="<%-project.id%>"> <%-project.name%> </option>
+                        <% })%>
+                    </select>
+                </div>
+                <label>Positions</label>
+                <div id="positions" class="ui search selection fluid dropdown multiple"></div>
+                <br>
+                <div class="field">
+                    <label> Optional message (todo)</label>
+                    <textarea name="suggestiontext" placeholder=""></textarea>
+                </div>
+            </div>
+            <button class="ui submit button">Suggest</button>
+            <div class="ui error message"></div>
+        </form>
+    </div>
+</div>
+<script>
+    jQuery(document).ready(function ($) {
+        $('#project')
+            .dropdown({
+                onChange: function (val, text, dom) {
+                    setpositions(val)
+                }
+            })
+    })
+
+    function colors() {
+        var tags = document.getElementsByClassName("ui label")
+        var categories = <%- JSON.stringify(categories) %>
+        Array.from(tags).forEach(function (tag) {
+            category = ''
+            category = categories.find(o => o._id == tag.getAttribute('data-value'))
+            if (category) {
+                tag.style = "background:" + category.color
+            }
+        })
+    }
+
+
+    function setpositions(val) {
+        var div = document.getElementById("positions")
+        div.innerHTML = ""
+
+        var input = document.createElement("input")
+        input.type = "hidden"
+        input.name = "positions"
+        div.appendChild(input)
+
+        var i = document.createElement("i")
+        i.classList.add("dropdown", "icon")
+        div.appendChild(i)
+
+        var namediv = document.createElement("div")
+        namediv.classList.add("default", "text")
+        namediv.innerHTML = "Positions"
+        div.appendChild(namediv)
+
+        var menudiv = document.createElement("div")
+        menudiv.classList.add("menu")
+
+        var projects = <%- JSON.stringify(projects) %>;
+        projects.forEach(project => {
+            if (project._id == val) {
+                project.openpositions.forEach(function (position) {
+                    var item = document.createElement("div")
+                    item.classList.add("item")
+                    item.innerHTML = position.position.name
+                    item.dataset.value = position.position._id
+                    menudiv.appendChild(item)
+                })
+            }
+        })
+        div.appendChild(menudiv)
+        $('#positions')
+            .dropdown()
+        $('#positions').on('click', function () {
+            colors()
+        })
+    }
+</script>

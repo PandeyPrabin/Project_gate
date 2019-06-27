@@ -1,0 +1,155 @@
+<!-- //////////////////////////////////////Student search\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\+-->
+
+<div class="ui secondary segment">
+    <h1 class="ui header"> List of students</h1>
+</div>
+
+<div class="ui stacked secondary blue segment">
+    <div class="ui center aligned container">
+        <div class="ui form">
+            <div class="three fields">
+                <div class="field">
+                    <label>Search</label>
+                    <input type="text" id="skills" onkeypress="refresh()" placeholder="Search for name, skills, dev wishes..">
+                </div>
+
+                <div class="field">
+                    <label>Sort By</label>
+                    <select id="sort" onchange="orderby()" class="ui fluid dropdown">
+                        <option value="name">Name</option>
+                        <option value="studygroup">Studygroup</option>
+                    </select>
+
+                </div>
+
+                <div class="field">
+                    <label>Order by</label>
+                    <select id="order" onchange="orderby()" class="ui fluid dropdown">
+                        <option value="asc">ASC ↑</option>
+                        <option value="desc"> DESC ↓ </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--////////////////////////////////////////////Students\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+<div class="ui container">
+    <div class="ui secondary segment nopadding">
+        <div class="ui unstackable divided items">
+            <% data.forEach(function(row, i){ %>
+            <a href="/profile/<%-row.id%>" class="item students project-list">
+
+                <div class=" ui left floated small image projectImage disappear">
+                    <div class="ui tiny fluid blue label"> <i class="right arrow icon"></i> Looking for projects </div>
+                    <img src="<% if(row.imagepath) { %><%-row.imagepath%><% } else { %>/Resources/placeholder.png<% } %>" alt="student picture">
+                </div>
+
+            
+                <div class="content">
+                    <div class="ui header listTruncate">
+                        <div class="ui small header studentname twoLines" title="<%-row.firstname%> <%-row.lastname%>"> <%-row.firstname%> <%-row.lastname%>  <h4 class="studygroup"><%-row.studygroup%></h4>  </div>    
+                    </div>
+                    <div class="column studentskills listTruncate">Skills:
+                        <% row.skills.forEach(function(skill, i){ 
+                            if (skill.category) { %>
+                        <div style="background:<%-skill.category.color%>" class="ui tiny label"> <span class="inv"> <%-skill.name%> </span> <%-skill.color%> </div>       
+                            <% }
+                        }) %>
+                    </div>
+                    <div class="column wishes">Development wishes:
+                        <% row.wishes.forEach(function(wish){ 
+                            if (wish.category) { %>
+                        <div style="background:<%-wish.category.color%>" class="ui tiny label"> <span class="inv"> <%-wish.category.name%> </span> </div>
+                        <% }
+                    }) %>
+                    </div>
+                </div>
+            </a>
+            <% }); %>
+        </div>
+    </div>
+</div>
+
+<div class="ui hidden divider"></div>
+
+<script>
+    function refresh() {
+        var input, filter, i
+        input = document.getElementById('skills')
+        filter = input.value.toUpperCase()
+        div = document.getElementsByClassName("students")
+        var searches = filter.split(" ")
+        for (i = 0; i < div.length; i++) {
+            div[i].style.display = ""
+        }
+        // Loop through all list items, and hide those who don't match the search query
+        searches.forEach(element => {
+            for (i = 0; i < div.length; i++) {
+                studentskills = div[i].getElementsByClassName("studentskills")[0]
+                studygroup = div[i].getElementsByClassName("studygroup")[0]
+                wishes = div[i].getElementsByClassName("wishes")[0]
+                names = div[i].getElementsByClassName("studentname")[0]
+                if ((studentskills.innerHTML.toUpperCase().indexOf(element) > -1) ||  (studygroup.innerHTML.toUpperCase()
+                        .indexOf(element) > -1) || (wishes.innerHTML.toUpperCase().indexOf(element) > -1) || (
+                        names.innerHTML.toUpperCase().indexOf(element) > -1)) {} else {
+                    div[i].style.display = "none"
+                }
+            }
+        });
+    }
+
+    function orderby() {
+        if (document.getElementById("sort").value == "studygroup") {
+            var childnumber = 2
+        }
+        if (document.getElementById("sort").value == "name") {
+            var childnumber = 1
+        }
+        if (document.getElementById("order").value == "asc") {
+            sorthtml(false, childnumber)
+        } else {
+            sorthtml(true, childnumber)
+        }
+    }
+
+    function sorthtml(reverse, childnumber) {
+        var divs = document.getElementsByClassName("allstudents")[0].children
+        var content = []
+        for (var i = 0; i < divs.length; i++) {
+            content.push(divs[i].outerHTML)
+        }
+        var names = []
+        for (var i = 0; i < divs.length; i++) {
+            names.push(divs[i].children[0].children[childnumber].innerHTML)
+        }
+        //1) combine the arrays:
+        var list = []
+        for (var j = 0; j < names.length; j++)
+            list.push({
+                'name': names[j],
+                'html': content[j]
+            });
+        //2) sort:
+        list.sort(function (a, b) {
+            return a.name.localeCompare(b.name, 'fi')
+        })
+        if (reverse) {
+            list.reverse()
+        }
+        //3) separate them back out:
+        for (var k = 0; k < list.length; k++) {
+            names[k] = list[k].name
+            content[k] = list[k].html
+        }
+        var replacedivs = document.getElementsByClassName("allstudents")[0].children
+        for (var i = 0; i < content.length; i++) {
+            replacedivs[i].outerHTML = content[i]
+        }
+    }
+    window.onload = function () {
+        sorthtml(false, 1)
+    }
+</script>

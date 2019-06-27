@@ -1,0 +1,217 @@
+<%if (editbutton) { %>
+    <div class="ui secondary segment">
+    <div class="ui huge header">Profile
+            <a href="/profile/edit/<%-data.id%>" title="edit profile" class="ui blue label">
+                <i class="cog icon"></i> Edit </a>
+        </div>
+    </div>
+    <% } %>
+
+    <%if (!editbutton) { %>
+    <div class="ui secondary segment">
+        <div class="ui huge header">  Profile of <%-data.name%> </div> 
+
+    </div>
+
+    <% } %>
+
+    <div class="ui hidden divider"></div>
+<div class="ui stackable grid">
+        <div class="five wide column">
+            <div class="ui  card">
+                <div class="image">
+                    <img src="<% if(data.imagepath) { %><%-data.imagepath%><% } else { %>/Resources/placeholder.png<% } %>" alt="Profile picture">
+                </div>
+                <div class="content">
+                    <div class="header truncate" title="<%-data.name%>"><%-data.name%></div>
+
+                    <div class="description truncate" title="Phone number">
+                        <i class="phone icon"></i>
+                         +358 <%-data.phonenum%>
+                    </div>
+                    <div class="description truncate" title="<%-data.email%>">
+                        <i class="mail icon"></i>
+                        <%-data.email%>
+                    </div>
+                    <div class="description truncate" title="<%-data.degree%>">
+                        <i class="graduation icon"></i>
+                        <%-data.degree%>
+                    </div>
+                    <div class="description truncate" title="<%-data.studygroup%>">
+                        <i class="calendar icon"></i>
+                        <%-data.studygroup%>
+                    </div>
+                </div>
+                <div class="extra content">
+                    <% if (privilege == "projectmanager" || privilege == "admin") {%>
+                    <a href="/suggest/<%-userid%>" class="ui right floated primary button">
+                        <div class="visible content">Suggest a Project</div>
+                    </a>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+
+    <div class="eleven wide column">
+            <div class="ui top attached tabular menu">
+                <a class="item active" data-tab="Bio">Bio, aspirations</a>
+                <a class="item" data-tab="Skills">Skills</a>
+                <a class="item" data-tab="Projects">Projects</a>
+            </div>
+
+            <div class="ui bottom attached active tab segment" data-tab="Bio">
+                <div class="ui content">
+    
+                    <div class="ui stackable grid">
+                    
+                        <div class="eleven wide column wordBreakDesc" id="biotablimited">
+                            <h2 class="dividing ui header"> Bio</h2>
+
+                            <% if(data.bio != null) { %>
+                            <% var bio = data.bio.split("\n").join("<br />") %>
+                            <%-bio%>
+                            <% } %>
+
+                        </div>
+
+                        <div class="five wide column">
+                            <h2 class="dividing ui header">Positions of interest:</h2>
+                            <% data.wishes.forEach(function(wish){ %>
+                                <div style="background:<%-wish.category.color%>" class="ui  label"> <span class="inv"> <%-wish.category.name%> </span> </div> <br>
+                            <% }) %>
+                        </div>
+                        
+                    <div class="sixteen wide column">
+                            <h2 class="dividing ui header"> CV</h2>
+                        <a href="#">CV link</a>
+                    </div>
+                        <div class="ui hidden divider"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui bottom tab attached segment" data-tab="Skills">
+                <div class="ui stackable grid">
+                    <div class="eight wide column">
+
+                    <h2 class="dividing ui header">Skills</h2>
+                    <% data.skills.forEach(function(skill, i){ %>
+                        <% if (skill.category) { %> <!-- if skill has category, site doesnt work if there is none -->
+                        <div style="background:<%-skill.category.color%>" class="ui small label listTruncate labeltwoLines"> <span class="inv"> <%-skill.name%> </span> </div>
+                        <div class="ui star rating" data-rating="<%-skill.rating%>"></div>
+                        <% } %>
+                        <br>
+                    <% }) %>
+                    </div>
+                    
+                    <div class="eight wide column">
+                    <h2 class="dividing ui header">I want to learn...</h2>
+                    <% data.skilldev.forEach(function(skill){ %>
+                        <div style="background:<%-skill.category.color%>" class="ui small label listTruncate"> <span title="<%-skill.name%>" > <%-skill.name%> </span> </div>
+                    <% }) %>
+                    </div>
+            </div>
+
+            </div>
+
+            <div class="ui bottom tab attached segment" data-tab="Projects">
+
+                <h1 class="ui header">PROJECT HISTORY</h1>
+                <div class="table-wrapper">
+                <table class="ui fixed selectable table">
+
+                    <thead>
+
+                        <tr>
+                            <th style="max-width: 50%">Project name</th>
+                            <th style="width: 90px">Status</th>
+                            <th style="max-width: 40%;"> Role</th>
+                            <th style="width: 120px">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <% projects.forEach(function(project){ %>
+                                <% if (project) %>
+                        <tr>
+                            <td class="selectable">
+                                <a href="/project/<%-project.id%>"> <div class="tableTruncate"><%-project.name%> </div> </a>
+                            </td>
+                            <td> <div class="ui small label"> <%-project.status%> </div> </td>
+                            <% project.participants.forEach(function(participant){ %>
+                            <% if(participant.participant == data.id) {%>
+                            <td>
+                            <% participant.positions.forEach(function(pos){ %>
+                                <% if (pos.position) {%>
+                                <div style="background:<%-pos.position.color%>" class="ui small label"><span class="inv"> <%-pos.position.name%> </span> </div>
+                            <% }}) %>
+                            </td>
+                            <% }}) %>
+
+                            <td>
+                                dd/mm/yyyy
+                            </td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+                <div class="ui dividing"></div>
+                <h1 class="ui header">PROJECT SUGGESTIONS</h1>
+                <div class="table-wrapper">
+                <table class="ui selectable unstackable table">
+
+                    <thead>
+
+                        <tr>
+                            <th>Project name</th>
+                            <th>Status</th>
+                            <th>Suggested Roles</th>
+                            <th> X </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <% suggestedprojects.forEach(function(project){ %>
+                                <% if (project) %>
+                        <tr>
+                            <td class="selectable">
+                                <a href="/project/<%-project.id%>">  <%-project.name%></a>
+                            </td>
+                            <td><%-project.status%></td>
+                            <% project.suggestions.forEach(function(suggestion){ %>
+                            <% if(suggestion.user == data.id) {%>
+                            <td>
+                            <% suggestion.positions.forEach(function(pos){ %>
+                                <% if (pos) {%>
+                                <div style="background:<%-pos.color%>" class="ui small label"><span class="inv"><%-pos.name%></span> </div>
+                            <% }}) %>
+                            </td>
+                            <% }}) %>
+                            <td>
+                                <a href="#"> <i class=" large times icon" title="Discard suggestions" onclick="window.location.href='https://youtu.be/dQw4w9WgXcQ'"></i> </a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+    </div>
+<script>
+    /*$(document).ready(function(){
+        $('.ui.rating').rating('disable')  This isn't needed??? Breaks star rating on Firefox
+    }) */
+    $('.top.menu .item').tab()
+    function setratings() {
+        var skills = <%- JSON.stringify(data.skills)%>
+        var i = 0
+        $('.ui.rating').each(function() {
+            $(this).rating('set rating', skills[i].rating)
+            i++
+        })
+    }
+    window.onload = function () {
+        $(".rating").rating({maxRating: 5})
+        $('.ui.rating').rating('disable')
+        setratings()
+    }
+</script>

@@ -1,0 +1,111 @@
+<div class="ui secondary segment">
+    <h1 class="ui header"> Settings</h1>
+</div>
+<div class="ui container">
+    <div class="ui secondary segment">
+        <div class="column">
+            <form action="?" class="ui form settingsform" method="post">
+
+                <h4 class="ui dividing header">Change Email</h4>
+                <div class="two fields">
+                    <div class="field">
+                        <label>Current email</label>
+                        <div class="ui disabled icon input">
+                            <input type="email" placeholder="User's email address" value="<%-data.email%>">
+                            <i class="at icon"></i>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>New email address</label>
+                        <div class="ui icon input">
+                            <input name="newemail" type="email" placeholder="New address" maxlength="100">
+                            <i class="at icon"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 class="ui dividing header">Change password</h4>
+                <div class="three fields">
+                    <div class="field">
+                        <label>Current password</label>
+                        <div class="ui icon input">
+                            <input name="password" type="password" placeholder="Current password">
+                            <i class="lock icon"></i>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>New password</label>
+                        <div class="ui icon input">
+                            <input name="newpassword" type="password" placeholder="New password">
+                            <i class="lock icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label>Confirm new password</label>
+                        <div class="ui icon input">
+                            <input name="newpasswordagain" type="password" placeholder="Confirm password">
+                            <i class="lock icon"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 class="ui dividing header">Privacy</h4>
+
+                <div class="field">
+                    <div class="ui toggle checkbox">
+                        <input type="checkbox" name="privacy">
+                        <label>i'm looking for projects todo</label>
+                    </div>
+                </div>
+
+                <h4 class="ui dividing header"> Messaging</h4>
+
+                <h5 class="ui header">Email notifications</h5>
+                <div class="field">
+                    <div class="field">
+                        <div class="ui slider checkbox">
+                            <input type="checkbox" name="mailSuggestion">
+                            <label>Send a notification when a new project is suggested todo</label>
+                        </div>
+                    </div>
+
+                    <div class="ui slider checkbox">
+                        <input type="checkbox" name="mailMatch">
+                        <label>Send a notification when a new project matching your skills is added todo</label>
+                    </div>
+                </div>
+                <% if (privilege != "student"){ %>
+                    <h5 class="ui header">Project Managers </h5>
+                    <div class="ui slider checkbox">
+                        <input type="checkbox" name="mailMatch">
+                        <label>Send a notification when someone applies to your project todo</label>
+                    </div>
+                <% } %>
+
+                    
+                <h5 class="ui dividing red header">Danger zone</h5>
+                <div class="field">
+                    <button onclick="deleteuser('<%-user%>')" type="button" class="ui red button" data-tooltip="Exterminate your account!" data-position="top center">Delete my account</button>
+                </div>
+
+                <div class="ui error message">
+                    <div class="header">Something went wrong. Try again later</div>
+                </div>
+                <div class="ui divider "></div>
+                <button type="button" class="ui submit button">Save changes</button>
+            </form>
+            
+            <div class="ui hidden  divider"></div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function deleteuser(id) {
+        if (window.confirm("Are you sure you want to delete your account?")) {
+            window.location.href = '/deleteuser/' + id
+        }
+    }
+</script>
