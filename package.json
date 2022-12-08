@@ -6,7 +6,7 @@
   "dependencies": {
     "connect-multiparty": "^2.1.0",
     "ejs": "^2.6.1",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "express-ejs-layouts": "^2.4.0",
     "express-myconnection": "^1.0.4",
     "express-sanitize-escape": "^1.1.0",
